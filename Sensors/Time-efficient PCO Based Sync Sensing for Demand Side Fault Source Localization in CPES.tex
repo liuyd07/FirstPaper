@@ -1,0 +1,679 @@
+%  LaTeX support: latex@mdpi.com
+%  In case you need support, please attach any log files that you could have, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
+
+%=================================================================
+
+% LaTeX Class File and Rendering Mode (choose one)
+% You will need to save the "mdpi.cls" and "mdpi.bst" files into the same folder as this template file.
+
+%=================================================================
+
+\documentclass[sensors,article,accept,moreauthors,dvipdfm,12pt,a4paper]{mdpi}
+%--------------------
+% Class Options:
+%--------------------
+% journal
+%----------
+% Choose between the following MDPI journals:
+% actuators, administrativesciences, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, appliedsciences, arts, atmosphere, atoms, axioms, behavioralsciences, bioengineering, biology, biomedicines, biomolecules, biosensors, brainsciences, buildings, cancers, catalysts, cells, challenges, chemosensors, children, chromatography, climate, coatings, computation, computers, cosmetics, crystals, dentistryjournal, diagnostics, diseases, diversity, econometrics, economies, education, electronics, energies, entropy, environmentalsciences, environments, fibers, foods, forests, futureinternet, galaxies, games, genes, geosciences, healthcare, humanities, informatics, information, inorganics, insects, ijerph, ijfs, ijms, ijgi, jcdd, jcm, jdb, jfb, joi, jlpea, jmse, jpm, jrfm, jsan, land, laws, life, lubricants, machines, marinedrugs, materials, mathematics, medicalsciences, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, molbank, molecules, nanomaterials, nutrients, optics, pathogens, pharmaceuticals, pharmaceutics, pharmacy, plants, polymers, processes, proteomes, publications, religions, remotesensing, resources, risks, robotics, sensors, socialsciences, societies, sports, sustainability, symmetry, systems, technologies, toxics, toxins, vaccines, veterinarysciences, viruses, water
+%---------
+% article
+%---------
+% The default type of manuscript is article, but could be replaced by using one of the class options:
+% article, review, communication, commentary, letter, bookreview, correction, addendum, editorial.
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g. the logo of the journal will get visible), the headings, and the copyright information. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+%------------------
+% moreauthors
+%------------------
+% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
+%---------
+% pdftex
+%---------
+% The option "pdftex" is for use with pdfLaTeX only. If eps figure are used, use the optioin "dvipdfm", with LaTeX and dvi2pdf only.
+
+%=================================================================
+
+\setcounter{page}{1}
+\lastpage{x}
+\doinum{10.3390/------}
+\pubvolume{xx}
+\pubyear{2013}
+\history{Received: xx / Accepted: xx / Published: xx}
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+
+% Add packages and commands to include here
+% The amsmath, hyperref, caption, float and color packages are already included.
+\usepackage{amssymb}
+%\usepackage[dvips]{graphicx}
+\graphicspath{{../Fig/}}
+\DeclareGraphicsExtensions{.eps}
+%\usepackage{subfigure,psfig}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\usepackage{multirow}
+\usepackage{eqparbox}
+
+%=================================================================
+
+% Full title of the paper (Capitalized)
+\Title{Time-efficient Pulse-coupled Oscillators Based Synchronous Sensing for Electrical Fault Source Localization in Cyber Physical Energy System}
+
+% Authors (Add full first names)
+\Author{Xue Wang $^{1,}$*, Youda Liu $^{1}$, Xinyao Sun $^{1}$ and Jiangwei Wu $^{1}$}
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ State Key Laboratory of Precision Measurement Technology and Instruments, Department of Precision Instrument, Tsinghua University, Beijing, China; E-mails: liu-yd11@mails.tsinghua.edu.cn(Y.L.); sxy05@mails.tsinghua.edu.cn(X.S.); wujw10@mails.tsinghua.edu.cn(J.W.)}
+%$^{2}$ Institute 2, University 2, Full Address, City, Country}
+
+% Contact information of the corresponding author (Add [2] after \corres if there are more than one corresponding author.)
+\corres{wangxue@mail.tsinghua.edu.cn;\\Tel.: +86-10-6277-6161; Fax: +86-10-6277-6161.}
+
+% Abstract
+\abstract{Synchronous measurement is very important in distributed power quality detection in cyber physical energy system applications, such as electrical power metering in building area network. On account of energy and communication capability limitation, the power safety supervision is challenging in large scale metering network while fault diagnosis demands high measurement and temporal synchronous accuracy. In addition, dynamic network management has been a general scenario in power information sensing networks, which introduces interruptions into network synchronization state. These require synchronization method to be time-efficient, accurate and scalable. There has been a wide variety of researches in synchronization methods for dynamic wireless networks, and pulse-coupled oscillators (PCO) has been a leading point for its fast synchronize rate and outstanding scalability. This paper depicts a cyber-physical energy system architecture for electrical power metering, in order to raise the measuring reliability, theoretically analysis the factors that have effect on PCO performance, then optimized the PCO dynamic model to improve the synchronize rate and verified it with simulation. Experiment results showed that the proposed model effectively reduces the time to reach synchronization without increase energy cost and complexity. And through applying the method in voltage sag fault location, the effectiveness of PCOs was evaluated.}
+
+% Keywords: add 3 to 10 keywords
+\keyword{cyber physical energy system; time-efficient; pulse-coupled oscillators; dynamic sensing networks; power network safety}
+
+% The fields PACS and MSC may be left empty or commented out if not applicable
+%\PACS{}
+%\MSC{}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Electrical information metering is widely employed in smart building management in demand side management for energy efficiency. With the increase of the scale and complexity of power supply network, traditional electrical metering systems no longer satisfy the real-time and accuracy requirements of online electrical analysis. The cyber-physical energy system (CPES) systematically synthesis the sensing, communication, computation and control processes and has been widely adopted in smart grid. Employing numbers of smart meters and intelligent sensors, CPES architecture effectively integrates and manages the energy, computing resources on demand \cite{CPES_Intro}. Distributed sensing networks offer a differential solution for the growing electrical metering.
+
+As the scale and complexity of the electrical metering network increases, the supervisory of the electric safety has become more significant. Measuring reliability of power quality characters such as harmonics, voltage sags, flickers, etc. greatly interferes the fault diagnosis of electrical power network. As to improve the measuring reliability, synchronous metering is a matter of considerable importance in distributed dynamic sensing networks, and real-time requirements have been the most urgent and focused problems. In order to reach a higher fault diagnosis accuracy, electrical data is claimed to be measurement in the same temporal section. This requires measuring actions to be synchronized in time, otherwise, the data reliability will decrease thoroughly. Researches of the influence of synchronism on power network safety supervision has been carrying on \cite{Fault_Analysis_Intro}, however, the growing measuring network has claimed more requirements and restrictions on synchronization method.
+
+Numerous synchronization methods within distributed wireless sensing networks have been studied. Traditional solutions, such as TPSN, RBS, FTSP, Glossy, etc.\cite{SyncMethodInWSN, FTSP, Glossy} have been widely applied in wireless sensing networks. Nevertheless, conventional synchronization methods have limited scalability because they either divide the network into connected single-hop clusters or organize the whole network into a spanning tree, which is computationally challenging to construct for distributed large-scale networks.
+
+In order to improve the time efficiency and scalability, Pulse-coupled Oscillators (PCO) method utilizes simple identical pulses to couple the sensing nodes within the communication range and to reach synchronization. PCO-based strategies have many advantages over conventional synchronization methods: they are implemented at the physical layer or MAC layer, which eliminates the high-layer intervention; their message exchanging is independent of the origin of the signals, which saves the memory to store the time information of other nodes. PCO has draw the focus of worldwide researchers. Anna Scaligone\cite{PCO_Scaglione_2005, PCO_Scaglione_2011} analyzed its scalability and synchronization characters and presented differential schemes to improve synchronous performance in multi-hop networks. Francis J. Doyle\cite{PCO_Doyle_PRF_2012,PCO_Doyle_PRF_2013} made an analogy between PCO method and neural cell, then theoretically developed the phase response model. Xiaowei Li\cite{PCO_CAS_2011} studied the influence of nonidentical network environment on PCO synchronization rate. Since PCOs method simply interact each sensing node with pulse signals, the intrinsic response model plays an important role in network synchronization performance. The state of art approach for pulse-coupled oscillators derives from the phase models in neural science\cite{Neuroscience_2007}, which however have not completely taken sensing network characters into account. The distributed, disperse computing mechanics with hardware and software delay was not considered. This paper optimized the response model to improve the time efficiency.
+
+This paper represents the electrical power metering architecture under cyber-physical energy system. In order to reach whole network synchronization faster, a new PCO model is proposed to increase synchronization convergence rate. Theoretical analysis of the synchronization rate is presented and critical indicators of PCO method with various models are depicted. Finally, experiments based on general platform are set to prove the validness of the new PCO method.
+
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+%I wish you the best of success.
+
+%\hfill mds
+
+%\hfill January 11, 2007
+
+\section{Electrical power active sensing networks}
+
+Large scale electrical sensing network has attracted sufficient researchers¡¯ focus and electric metering system has been evolving ever since. Traditional Automated Metering Reading (AMR) System which behaves only one-way manual centralized detection is at last gasp, while Advanced Metering Infrastructure (AMI) with a distributed architecture and integrated electrical analysis service has gradually taking the place\cite{Smart_Meters}. In the prospect of electrical metering system, Smart Grid has been. Cyber-physical system offers a distributed, dynamic-configuration, demand require response solution.\cite{CPES_Intro} With dynamic sensing networks, the cyber system will be able to collect real-time electrical power quality parameters and deploy distributed data analysis and computation for the energy saving. The basic architecture is shown in Fig.\ref{Fig_CPES_Struct}.
+
+Under the distributed measuring architecture, safety supervision of power network faces new challenges. Continuous online monitoring will be unavailable in such large scale with energy and communication constraints, and the transient power accidents are hard to capture. For example, voltage sag, which is the cause of nearly 80\% power quality faults \cite{Fault_Analysis_Intro}, persists for only 10ms-1min, and the signal will spread in the power network. The fault localization requires high voltage measurement accuracy, especially temporal synchronization of the monitoring nodes. With time sequence disorder, it is difficult to identify the fault source.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3in]{Fig1_CPES_Struct_2f.eps}
+\caption{Cyber-physical energy system distributed measuring architecture}
+\label{Fig_CPES_Struct}
+\end{figure}
+
+In addition, to solve the within the dynamic sensing networks, real-time electrical power metering faces a lot of problems. Sensing networks operates under energy and communication limits which are the main obstacles to meet the real-time and large scale measuring requirements. Thus, dynamic energy and communication management becomes important. Sleeping and waking up of electrical sensing nodes will certainly break the transient stability of topology and synchronization state of the networks. Under SCADA (Supervisory Control And Data Acquisition system) measuring theory, the power quality metering requires the measuring data to be in the same temporal section, otherwise, the time error will be introduced in data analysis and mining process. The temporal measuring error is \cite{PowerReliabilityTheory}:
+
+\begin{equation}
+\label{temporal_measure_error}
+Err_{temporal} = diag\{D_i\rho^{2}_{i}\},i=1,2,...,N
+\end{equation}
+
+While $D_i$ represents the square variance of the time offset of the $i$th sensing node. $\rho_i$ represents the changing rate of measured power quality character by the $i$th node. It is manifest that decreasing time offset is the only way to reduce temporal measuring error, which is the reason why synchronization methods are adopted.
+These claim a synchronization method fulfilling the requirements of high flexibility and scalability. As mentioned in section I, pulse-coupled oscillators behaves better in these perspectives than traditional wireless synchronization methods. PCOs method is decentralized, scalable, and can be adopted into various network types. Its simplicity, time- and energy-efficiency has drawn remarkable attention. The Algorithm scheme and validation is analyzed below.
+
+\section{Synchronous measurement algorithm}
+
+To solve the dynamic synchronous metering problem mentioned above, Anna Scaglione\cite{PCO_Scaglione_2005} introduced PCO synchronous method in 2005. Pulse-coupled oscillators method was first proposed to explain the oscillation dynamics in neural science\cite{Neuroscience_2007} and physics\cite{Kuramoto}. However its simplicity, scalability and flexibility to network topology has gained itself great attention all over the world recently, and has been widely studied in wireless sensor networks and smart grid\cite{SyncMethodInWSN}. The basic algorithm is introduced as follows.
+
+Consider a network of $N$ pulse-coupled oscillators, which will henceforth be referred to as ¡°nodes.¡± All oscillator nodes or a portion of them can receive alignment/entrainment information from an external global cue (also called leader, or pinner in the language of pinning control)
+
+We denote the dynamics of the oscillator network as\cite{PCO_Doyle_PRF_2012}
+
+\begin{equation}
+\label{PCO_dynamics}
+\begin{split}
+\dot{x}_g {}&={} f_g(x_g)\\
+{{\dot{x}}_{i}}&={{f}_{i}}\left( {{x}_{i}} \right)+{{g}_{i}}\delta \left( t-{{t}_{g}} \right)+\varepsilon \sum\limits_{\varepsilon \le j\le N,j\ne i}{{{a}_{i,j}}\delta \left( t-{{t}_{j}} \right)}
+\end{split}
+\end{equation}
+
+
+for $i=1,2,...,N$, where $x_g\in[0,1]$ and $x_i\in[0,1]$ denote the states of the global cue and oscillator nodes, respectively. $f_g$ and $f_i$ describe their dynamics. $g_i$ denotes the effect of the global cue's firing on oscillators $i$: when $x_g$ reaches 1(at time instant $t_g$), it fires and returns to 0, and simultaneously increases oscillator $i$ by an amount $g_i$.  and $a_{i,j}\in[0,1]$ denote the effect of oscillator $j$¡¯s firing on oscillator $i$: when $x_j$ reaches 1 (at time instant $t_j$), it fires and reset to 0, and simultaneously pulls oscillator $i$ up by an amount $\varepsilon a_{i,j}$. The increased amount is produced by dirac function $\delta(t)$, which is zero for all $t$ except $t=0$ and satisfies {\small$\int_{-\infty}^{\infty} \delta(t)\, dt=1$}.
+
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+
+\begin{remark}
+If $g_i$ (or $a_{i,j}$) is 0, then oscillator $i$ is not affected by the global cue (or oscillator $j$).
+\end{remark}
+
+\begin{assumption}
+We assume $a_{i,j} = a_{j,i}$, which is common in wireless networks.
+\end{assumption}
+
+\begin{assumption}
+We assume weak coupling, that is, $g$ and $\varepsilon$ satisfy $g\ll1$ and $\varepsilon \ll 1$.
+\end{assumption}
+
+Assumption 2 follows from the fact that the amplitudes of  postsynaptic potentials measured in the soma of neurons are far below the amplitude of the mean EPSP necessary to discharge a quiescent cell, it is also required in PCO-based wireless network synchronization strategies to ensure the robustness of synchronization.
+
+Based on Assumption 2, the system in \ref{PCO_dynamics} can be described by the following phase model using the classical phase reduction technique and phase averaging technique:
+\begin{equation}
+\label{PCO_phase_dynamics}
+\begin{split}
+  & {{{\dot{\theta }}}_{g}}={{\omega }_{g}} \\
+ & {{{\dot{\theta }}}_{i}}={{\omega }_{i}}+\frac{{{g}_{i}}}{T}{{Q}_{g}}\left( {{\theta }_{g}}-{{\theta }_{i}} \right)+\frac{\varepsilon}{T}\sum\limits_{\varepsilon\le j\le N,j\ne i}{{{a}_{i,j}}{{Q}_{i}}\left( {{\theta }_{g}}-{{\theta }_{i}} \right)} \\
+\end{split}
+\end{equation}
+for $i = 1, 2,..., N$, where ${{\theta }_{g}}\in \left[ 0,2\pi  \right)$ and ${{\theta }_{i}}\in \left[ 0,2\pi  \right)$ denote the phases of the global cue and oscillator $i$, respectively.
+
+\begin{remark}
+The transformation from (1) to (2) is a standard practice in the study of weakly connected PCOs and it is applicable to any limit-cycle oscillation function $f_i$ and $f_g$.
+\end{remark}
+The detailed procedure has been well documented in and
+\begin{assumption}
+In this brief, we assume that $Q_p(p  =  \{l,g\})$ satisfy the following conditions:
+\end{assumption}
+
+\begin{equation}
+\label{Qx_lim}
+\begin{split}
+&{{Q}_{p}}\left( 0 \right)=0;\forall x\in \left( -\pi ,\pi  \right),\frac{{{Q}_{p}}\left( x \right)}{x}>0 \\
+& {{Q}_{p}}\left( -x \right)=-{{Q}_{p}}\left( x \right)
+\end{split}
+\end{equation}
+
+\begin{remark}
+Assumption 3 gives an advance-delay phase response function, which is common in biological oscillators. Moreover, given that in wireless networks, the phase response function is a design parameter, Assumption 3 will simplify analysis and design, and as shown later, such phase response functions will also lead to good synchronization properties.
+\end{remark}
+
+Solving the first equation in (\ref{PCO_phase_dynamics}) gives the dynamics of the global cue $\theta_g=\omega_gt+\xi_g$, where the constant $\xi_g$ denotes the initial phase of the global cue. To study if local oscillators can be synchronized to the global cue, it is convenient to study the phase deviation of local oscillators from the global cue. So we introduce the following change of variables:
+
+\begin{equation}
+\label{phase_eq1}
+\theta_i=\theta_g+\xi_i=\omega_gt+\xi_g+\xi_i
+\end{equation}
+
+Therefore, $\xi_i\in[-\pi,\pi]$ denotes the phase deviation of the $i$th oscillator from the global cue. Substituting (\ref{phase_eq1}) into (\ref{PCO_phase_dynamics}) yields the dynamics of phase deviations $\xi_i$
+
+\begin{equation}
+\label{phase_eq2}
+\dot{\xi}_i=\Delta_i-\frac{g_t}{T} Q_g(\xi_i)+\frac{\varepsilon}{T}\sum_{1 \le j \le N, j \ne i} a_{i,j} Q_l(\xi_j-\xi_i)
+\end{equation}
+for $i = 1, 2,..., N$, where $\Delta_i = \omega_i - \omega_g$. In (\ref{phase_eq2}), the oddness property of function $Q_g$ is exploited.
+
+\begin{assumption}
+In this brief, we assume $\omega_i = \omega_g$ is satisfied for all $i = 1, 2,..., N$, that is, all the oscillators have the same natural frequency as the global cue.
+\end{assumption}
+
+Using Assumption 4, (\ref{phase_eq2}) reduces to
+
+\begin{equation}
+\label{phase_eq3}
+\dot{\xi}_i=-\frac{g_i}{T}Q_g(\xi_i)+\frac{l}{T}\sum_{1 \le j \le N, j \ne i} a_{i,j} Q_l(\xi_j-\xi_i)
+\end{equation}
+
+for $i = 1, 2,..., N$.
+
+Thus far, by analyzing the properties of (\ref{phase_eq3}), we can obtain the roles of global and local cues as well as phase response functions in the synchronization of PCO networks:
+
+1) Synchronization: If all $\xi_i$ asymptotically converge to 0, then we have $\theta_1 = \theta_2 = ... = \theta_N$ when time goes to infinity, meaning that all the nodes are synchronized to the global cue.
+
+2) Exponential bound on the synchronization rate: From dynamic systems theory, the synchronization rate is determined by the rate at which $\xi_i$ decays to 0, namely, it can be measured by the maximal value of $\alpha$ $(\alpha > 0)$ satisfying the following inequality for some constant $C$:
+
+\begin{equation}
+\label{phase_Lim}
+\left\| \xi \left( t \right) \right\|\le C{{e}^{-\alpha t}}\left\| \xi \left( 0 \right) \right\|,\xi ={{\left[ \begin{matrix}
+   {{\xi }_{1}} & {{\xi }_{2}} & \cdots  & {{\xi }_{N}}  \\
+\end{matrix} \right]}^{T}}
+\end{equation}
+where $\left\| \bullet  \right\|$ is the Euclidean norm. A larger $\alpha$ leads to a faster synchronization rate.
+
+Assigning arbitrary orientation to each interaction, we can get the $N\times M$ incidence matrix $\boldsymbol{B}$ ($M$ is the number of nonzero $a_{i,j}$ ($1 \le i \le N, j < i$), that is, the number of interaction edges) of the interaction: $B_{i,j} = 1$ if edge $j$ enters node $i$, $B_{i,j} = -1$ if edge $j$ leaves node $i$, and $B_{i,j} = 0$ otherwise. Then using graph theory, we can write (\ref{phase_eq3}) in a more compact matrix from
+
+\begin{equation}
+\label{phase_eq4}
+\dot{\xi} =-\frac{1}{T}G{{Q}_{g}}\left( \xi  \right)-\frac{\varepsilon}{T}\boldsymbol{B}{{Q}_{l}}\left( {{\boldsymbol{B}}^{T}}\xi  \right)
+\end{equation}
+where $\xi$ is given in (\ref{phase_Lim}), $G = diag\{g_1, g_2,..., g_N\}$, and $diag\{\bullet\}$ denotes a diagonal matrix with elements $\{\bullet\}$ on the diagonal.
+
+%Prove the importance of the model. Proof can be found in Theorem 4 in Increasing Sync Rate of Pulse-Coupled Oscillators via Phase Response Function Design: Theory and Application to Wireless Networks. Not the whole proving process.
+\begin{theorem}
+The synchronization rate of \ref{phase_eq4} increases with an increase in the strength of the global cue. It also increases with an increase in $(Q_g(x)/x)$.
+\end{theorem}
+
+Proof: As analyzed in the paragraph above Theorem 1, we only need to prove the statement when all $\xi_i \in[-\varepsilon, \varepsilon]$ for some $\varepsilon\in[0, (\pi/2))$, that is, $a_1$ in (\ref{phase_eq4}) is an increasing function of $g_i$ and {\small$(Q_g(x)/x)$}. Recall from (14) that {\small$\sigma_1G+\sigma_2lBB^T$} is an irreducible matrix with non-positive $\mu$ such that {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} is an irreducible non-negative matrix. Therefore, {\small$\lambda_{max}(\mu I-\sigma_1G+\sigma_2lBB^T))$} is the Perron-Froenius eigenvalue of {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} and is positive. Given that for any {\small$1\ll i\ll N$,$\mu-\lambda_i(\sigma_1G+\sigma_2lBB^T)$} is an eigenvalue of matrix {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$ where $\lambda_i$} denotes the $i$th eigenvalue, we have
+\begin{equation}
+\label{temporal_measure_error}
+\mu-\lambda_{min}(\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T) = \\ \lambda_{max}(\mu I-\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T)
+\end{equation}
+that is
+
+\begin{equation}
+\label{sync_conv_rate}
+\begin{split}
+{{\alpha }_{1}}&=\frac{{{\lambda }_{\min }}\left( {{\sigma }_{1}}\mathbf{G}+{{\sigma }_{2}}l\mathbf{B}{{\mathbf{B}}^{T}} \right)}{T} \\
+ & =\frac{\mu -{{\lambda }_{\max }}\left( \mu \mathbf{I}-\left( {{\sigma }_{1}}\mathbf{G}+{{\sigma }_{2}}l\mathbf{B}{{\mathbf{B}}^{T}} \right) \right)}{T}
+ \end{split}
+\end{equation}
+
+
+Given that the largest eigenvalue (also called the Perron-Frobenius eigenvalue) of {\small$\mu I-\sigma_1G+\sigma_2lBB^T$} is an increasing function of any of its diagonal element, which is a decreasing function of any of $g_i$ and {\small$(Q_g(x)/x)$}, it follows that {\small$\lambda_{max}(\mu I-\sigma_1G+\sigma_2lBB^T))$} is a decreasing function of both $g_i$ and $(Q_g(x)/x)$.
+
+According to the theoretical analysis, it can be seen that the optimizing phase response model is the key step of acquiring for higher convergence rate.
+
+\section{Time-efficient Pulse-Coupled Oscillators Model}
+
+Given that the PCO model makes an impact on the synchronization rate, the model should be well designed for the computation and energy limitations. Researchers have proposed various models and design methods to satisfy the time-efficiency, which are to be introduced in the following.
+
+\subsection{Kuramoto Model}
+
+Kuramoto Model was first proposed by Yoshiki Kuramoto\cite{Kuramoto} to explain the oscillators phenomenon in chemistry and neuroscience. F.J. Doyle III introduced and validated this model in wireless network. The model is defined:
+\begin{equation}
+\label{kuramoto_model}
+\frac{d{{\theta }_{i}}}{dt}={{\omega }_{i}}+\frac{K}{N}\sum\limits_{j=1}^{N}{\sin \left( {{\theta }_{i}}-{{\theta }_{i}} \right)},i=1,...,N
+\end{equation}
+The $Q(x)$ can transform as:
+\begin{equation}
+\label{kuramoto_model2}
+Q\left( x \right)=\sin \left( x \right)
+\end{equation}
+
+\subsection{Hodgkin-Huxley Model}
+
+Hodgkin-Huxley Model was proposed in 1996\cite{Hodgkin-Huxley} and is known as advance-delay method. This method is widely used in explaining neural cell activity. The model has the following form:
+\begin{equation}
+\label{kuramoto_model2}
+Q\left( x \right)=\frac{\tanh \left( x/\epsilon  \right)}{\tanh \left( \pi /\epsilon  \right)}-\frac{x}{\pi },x\in \left[ -\pi ,\pi  \right]
+\end{equation}
+
+while the parameter $\epsilon$ can be designed for a better synchronization performance. By experience, $\epsilon = 0.1$.
+
+\subsection{Quadratic Polygon Model}
+
+Since the convergence rate is influenced by $Q(x)/x$, the
+
+\begin{equation}
+\label{kuramoto_model2}
+\frac{d{{\theta }_{i}}}{dt}={{\omega }_{i}}+\frac{K}{N}\sum\limits_{j=1}^{N}{Q\left( {{\theta }_{i}}-{{\theta }_{i}} \right)},i=1,...,N\
+\end{equation}
+
+\begin{equation}
+\label{kuramoto_model2}
+Q\left( x \right)=\left\{ \begin{matrix}
+   \sum\limits_{i=1}^{N}{{{a}_{i}}{{x}^{i}}} & x\in \left[ 0,\pi  \right)  \\
+   \sum\limits_{i=1}^{N}{{{a}_{i}}{{\left( -x \right)}^{i}}} & x\in \left[ -\pi ,0 \right)  \\
+\end{matrix} \right.\
+\end{equation}
+
+Considering the phase $x$ is limited in $(-\pi,\pi)$, the smooth function $Q(x)$ should satisfy the limitation:
+
+\begin{equation}
+\label{Quadratic Polygon Model3}
+\begin{split}
+  & Q\left( -x \right)=-Q\left( x \right) \\
+ & Q\left( -\pi  \right)=Q\left( \pi  \right)=0 \\
+\end{split}
+\end{equation}
+
+
+To maximize the $Q(x)/x$, take quadratic polygon function for example, the phase function should have the following form:
+\begin{equation}
+\label{Quadratic Polygon Model4}
+Q\left( x \right)=\left\{ \begin{matrix}
+   kx\left( \pi -x \right) & x\in \left[ 0,\pi  \right)  \\
+   kx\left( \pi +x \right) & x\in \left[ -\pi ,0 \right)  \\
+\end{matrix} \right.
+\end{equation}
+Thus $Q(x)/x = k(\pi - x)$, which increases with the parameter $k$. However, the $Q(x)/x$ function only explicitly defines the lower-limit of the convergence rate. Simulations are presented to evaluate the novel phase model. 3 Phase models are shown in Fig. \ref{Fig_Qx}, and the convergence criterion $Q(x)/x$ are shown in Fig. \ref{Fig_Qx_x}.
+
+As shown in Fig. \ref{Fig_Qx_x}, the Hodgkin-Huxley model reaches the highest on $Q(x)/x$ at phase 0¡ã, however, the polygon model with second order overcomes the other two models in most phase section.  Thus, the synchronization rates of these 3 models are not simply decided by the $Q(x)/x$. Simulations are carried out to evaluate their synchronization features.
+
+Under MATLAB platform, synchronization performance of the 3 models is tested.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{Fig2_3phases.eps}
+\caption{Shapes of 3 phase response models in PCOs.}
+\label{Fig_Qx}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{Fig3_3phase_Qx_x.eps}
+\caption{The convergence rate criterion $Q(x)/x$ of 3 phase response models in PCOs}
+\label{Fig_Qx_x}
+\end{figure}
+
+Detailed modification of the Quadratic Polygon Model was realized under the same simulation condition. In the form in (\ref{Quadratic Polygon Model4}), the parameter $k$ may have effect on synchronization performance. Synchronization cycles required under different parameter k and coupling strength $\varepsilon$ is verified and results are shown in Fig. \ref{Fig_ParaK_vs_e}.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{Fig4_Sync_rate_compare.eps}
+\caption{Synchronization consumption of 3 models under 100-node scale and coupling strength varying from 0.01 to 0.1}
+\label{Fig_Sync_rate_compare}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{FIg5_ParaK_vs_e.eps}
+\caption{Synchronization cycles required under various parameter k and coupling strength $\varepsilon$}
+\label{Fig_ParaK_vs_e}
+\end{figure}
+
+The simulation result indicates that with different coupling strength $\varepsilon$, the synchronization rate can reach a rather optimal level through modifying parameter $k$. The optimized synchronization cycle numbers are the same. In Quadratic Polygon Model $Q(x)/x = k(\pi - x)$, which will increases while $k$ increase. This means that if $k$ grows, the lower limit of convergence rate will rise, and synchronization cycles upper limit number will fall. The simulation results show affirm the deduction to certain extent, yet if $k$ is too large, the synchronization rate will decrease, and lead to phase locking of the whole network. Thus through optimizing $k$ can reach a high synchronize rate despite the coupling strength. The optimized k and the corresponding $\varepsilon$ are shown in Fig. \ref{Fgi6_K_vs_e_opt}.
+
+
+
+Substitute $Q(x)$ in (\ref{Quadratic Polygon Model4}) to (\ref{sync_conv_rate}), the convergence rate would be:
+
+\begin{equation}
+\label{interaction between para k and coupling strength}
+\begin{split}
+{{\alpha }_{1}}&=\frac{{{\lambda }_{\min }}\left( {{\sigma }_{1}}\mathbf{G}+{{\sigma }_{2}}\varepsilon \mathbf{B}{{\mathbf{B}}^{T}} \right)}{T}\\
+&=\frac{{{\lambda }_{\min }}\min \left( \pi -x \right)k\varepsilon \mathbf{B}{{\mathbf{B}}^{T}}}{T}
+\end{split}
+\end{equation}
+
+Considering the decentralized network, with $\xi$ at certain time point, the factor $k\varepsilon$ will influence the convergence rate. Simulation results also present that the optimized $k$ follow reciprocal of $\varepsilon$. Yet it is not exactly proved theoretically the validation of quadratic polygon model modification, the result can be a reference in designing coupled networks.
+
+So through theoretical analysis and stimulation, the proposed quadratic polygon model offers a better time-efficient synchronization performance over traditional models. The performance can also be optimized by modifying parameter $k$ in the model. Employing the experiential relation between optimized $k$ and network coupling strength $\varepsilon$, sensing network design will be able to cover both time-efficiency and energy consumption.
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=3.5in]{Fig6_K_vs_e}\\
+  \caption{Optimized parameter k under different coupling strength $\varepsilon$}
+  \label{Fgi6_K_vs_e_opt}
+\end{figure}
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+%IEEEhowto:kopka
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals/conferences use top floats
+% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
+% command of the stfloats package.
+
+\section{Experiments and Analysis}
+
+To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section II was settled as the testing environment.
+\subsection{Experiment Setup}
+
+The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the DL/T 645-2007, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
+
+Synchronous metering process is controlled by the global coordinator, e.g. the cluster head node. Synchronization period is 30s, and once synchronized the end sensing nodes execute simulative electrical information transmission.
+\subsection{Time efficiency evaluation of PCO models in dynamic sensing networks}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{Fig7.eps}
+\caption{Dynamic interruptions on PCO synchronization performance}
+\label{Fig_Exp_compare}
+\end{figure}
+
+Dynamic sensing network management implies sensing nodes dynamically leave and join the network, and the interruption brought to the network transient stability depends on the dynamic node scale. The time required to synchronize network under various dynamic node scale is presented in Fig. 7. 2 types of dynamic interrupts were introduced at t=50s and t=80s, former is 10 nodes joining in, latter is 5 nodes leaving. Apparently, the nodes leaving event do not interfere present synchronization state of the network, yet nodes joining will bring step change. 3 PCOs model were adopted separately to synchronize the sensing network.
+
+Results show that under non-ideal environment the synchronization accuracy varies according to different models. Quadratic Polygon model reached the lowest phase shift error of the 3 models. Phase shifts brought by the node joint took different time to regain synchronization. Quadratic Polygon model took 5s, Hodgkin-Huxley Model took 24s and Kuramoto Model took over 30s. This means that Quadratic Polygon model performs a better synchronization accuracy and speed, even under non-identical frequency and time delays.
+\subsection{Data reliability evaluation of  PCO models in dynamic sensing networks}
+
+Synchronization error will be introduced into electrical quality measurement as described in section II. The measurement error is influenced by changing rate of the measured characters and time disorder. Take harmonic detection for example. Simulation data was measured in residential standard electrical environment 220V/50Hz, and the power quality characters¡¯ measuring accuracy is important for information mining. The synchronization methods will bring various measuring error according to the time accuracy. Residential power characters¡¯ data samples were collected, and the power consumption is shown in Fig. 8(to be modified). To get a typical result, high-power electrical appliances were turned on and off to introduce interruptions. The time synchronization¡¯s influence on temporal measuring error is shown in table \ref{table_I}.
+
+It can be figured out from the result that time synchronization accuracy has effect on temporal measuring error. Although the errors¡¯ magnitude is not that large when compared with the measured data, yet in large scale analysis and data mining, the error is not ignorable. Since the Quadratic Polygon Model reaches the highest accuracy in Part B, it also brought in the least temporal error in the 3 models.
+\subsection{Fault Localization with Synchronized Measurement}
+
+To validate the synchronization in electrical fault diagnosis, voltage sag source localization is an appropriate test. The simulation sample of electrical network set is shown in Fig. \ref{Fig_Voltsag_Exp_set}. The Source supplies 110kV before the transformer and 3 different types of loads are organized, which are composed of nonlinear resistance load, linear resistance load and an asynchronous motor. These 3 types of loads represent the most electrical appliances. A simulation is carried out within simulation envrionment Simulink.
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{Fig8_VoltageSagExpSet}
+\caption{Voltage sag source localization verification electrical model}
+\label{Fig_Voltsag_Exp_set}
+\end{figure}
+
+Set 3 false sources at different time points, M1, M2, M3, as shown in Fig. 8. M1, M2, M3 are short-circuit fault, while M1 is set at bus line, and M2, M3 are set in local lines at user side.  Locate the voltage sag source 100 times using system trajectory slope method \cite{voltage_sag_method} which is a widely authenticated way in voltage sag source location. With synchronization, the voltage sag source localization accuracy result is shown in table \ref{table_II}.
+
+From the result, it can be figured out that the 3 types of faults can be detected from the 3 different meters. However, for the sake of various synchronization accuracy, the localizing precision differs thoroughly.  Detection with Kuramoto model synchronization reaches the lowest precision of the 3 models while the new quadratic polygon model almost catches the fault every time. This experiment confirms that the amendment of the pulse coupled oscillator model, through increasing  synchronization accuracy of the measuring device, will reduce the fault localization error, and improve the whole safety of the cyber-physical energy system described in Section II.
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{TEMPORAL MEASURING ERROR FOR POWER QUALITY CHARACTERS (FIRST ELEMENT: AVERAGE ERR; SECOND ELEMENT: MAX ERR)}
+\label{table_I}
+\centering
+\begin{tabular}{|c|c|p{7em}<{\centering}|p{7em}<{\centering}|}
+\hline
+\multirow{2}{*}{\textbf{Power Quality}} &
+\multicolumn{3}{c|}{\textbf{PCO Model}} \\
+\cline{2-4}
+  & \textbf{Kuramoto Model} & \textbf{Hodgkin-Huxley Model} & \textbf{Quadratic Polygon Model} \\
+\hline
+Power/kW & (0.063, 1.52) & (6.2*e-4, 0.012) & (2.31*e-4, 0.003)  \\
+\hline
+3th Harmonic\footnotemark &	(0.18,4.10) &	(0.0018, 0.041)	& (0.0007, 0.015) \\
+\hline
+5th Harmonic* &	(0.073, 1.62) &	(7.2*e-4, 0.016)	& (2.71*e-4, 0.006) \\
+\hline
+7th Harmonic* &	(0.027, 0.58) &	(2.7*e-4, 0.005)	& (1.0*e-4, 0.002) \\
+\hline
+\end{tabular}
+\end{table}
+\footnotetext{The harmonics are calculated with the power and voltage data. Voltage fluctuates slightly around 220V, and is not listed in the paper.}
+
+\begin{table}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{VOLTAGE SAG SOURCE LOCALIZATION ERROR}
+\label{table_II}
+\centering
+\begin{tabular}{|c|c|p{7em}<{\centering}|p{7em}<{\centering}|}
+\hline
+\textbf{Fault Event} & \textbf{Kuramoto Model} & \textbf{Hodgkin-Huxley Model} & \textbf{Quadratic Polygon Model}  \\
+\hline
+M1 & 13.2\%	& 2.7\% &	0.82\% \\
+\hline
+M2 & 6.1\% & 1.6\% & 0.65\% \\
+\hline
+M3 & 6.9\% & 1.8\% & 0.71\% \\
+\hline
+\end{tabular}
+
+\end{table}
+
+
+\section{Conclusion}
+
+Synchronous sensing is very important in power safety supervision in cyber-physical energy system. Synchronization method is required to be time-efficient, accurate and scalable in dynamic sensing networks. This paper proposed a new dynamic model for pulse-coupled oscillators synchronization method, to improve synchronization time efficiency and accuracy. By both theoretical and simulative analysis, models¡¯ influence on PCO method performance is inquired and the coefficient of model parameters and coupling strength $\varepsilon$ is examined. In application of power network safety supervision on voltage sag localization under cyber-physical energy system, simulation experiments were carried out to evaluation PCO method. Result indicated that the new Quadratic Polygon Model fulfilled the time-efficiency and data measuring reliability requirements in dynamic sensing networks, and the fault localization exactitude was improved.
+
+To further enhance the safety supervision in cyber physical energy system through raising synchronization accuracy, the non-identical frequencies and transmission delay of the sensing network should be considered in the design of pulse-coupled oscillators¡¯ method. Specific theoretical analysis of discrete metering and synchronization process is to be carried out.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\acknowledgements{Acknowledgements}
+
+%Main text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\conflictofinterests{Conflicts of Interest}
+
+State any potential conflicts of interest here or ``The authors declare no conflicts of interest''.
+
+%=================================================================
+% References: Variant A
+%=================================================================
+% Back Matter (References and Notes)
+%----------------------------------------------------------
+% Style and layout of the references
+\bibliographystyle{mdpi}
+\makeatletter
+\renewcommand\@biblabel[1]{#1. }
+\makeatother
+
+\begin{thebibliography}{1}
+
+% Reference 1
+%\bibitem{ref-journal}
+%Lastname, F.; Author, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142-149.
+
+% Reference 2
+%\bibitem{ref-book}
+%Lastname, F.F.; Author, T. The title of the cited contribution. In {\em The Book Title}; Editor, F., Meditor, A., Eds.; Publishing House: City, Country, 2007; pp. 32-58.
+
+\bibitem{CPES_Intro}
+S. Xinyao, W. Xue, W. Jiangwei, and L. Youda, "Hierarchical sparse learning for load forecasting in cyber-physical energy systems," in Instrumentation and Measurement Technology Conference (I2MTC), 2013 IEEE International, 2013, pp. 533-538.
+
+\bibitem{Fault_Analysis_Intro}
+T. Brennan. "Market Failures in Real-Time Metering". Journal Regulatory Economics, 2004, 26(2),pp 119-139
+
+\bibitem{Time_Sync_Intro}
+D. Ingram, P. Schaub, D. Campbell, and R. Taylor ¡°Evaluation of Precision Time Synchronisation Methods for Substation Applications¡± IEEE Symposium on Precision Clock Synchronization for Measurement, Control and Communication, 2012:1-6
+
+%\bibitem{TPSN}
+%S. Ganeriwal, R Kumar, M B. Srivastava. "Timing-sync protocol for sensor networks."Proceedings of the 1st international conference on. Los Angeles, California, USA: ACM, 2003: 138-149.
+
+\bibitem{SyncMethodInWSN}
+Yik-chung, wu, Chaudhari, q., Serpedin, e.. "Clock synchronization of wireless sensor networks. "Signal Processing Magazine, IEEE 28. 1(2011): 124-138.
+
+\bibitem{FTSP}
+M Mar¨®ti, B Kusy, G Simon, et al. "The flooding time synchronization protocol."Proceedings of the 2nd international conference on. Baltimore, MD, USA: ACM, 2004: 39-49.
+
+\bibitem{Glossy}
+Ferrari F., Zimmerling M., Thiele L., et al. "Efficient network flooding and time synchronization with Glossy."Information Processing in Sensor Networks (IPSN), 2011 10th International Conference on, 2011: 73-84.
+
+\bibitem{PCO_Scaglione_2005}
+Yao-win H., Scaglione A.. "A scalable synchronization protocol for large scale sensor networks and its applications. "Selected Areas in Communications, IEEE Journal on 23. 5(2005): 1085-1099.
+
+\bibitem{PCO_Scaglione_2011}
+Pagliari R., Scaglione A.. "Scalable network synchronization with Pulse-Coupled oscillators. "Mobile Computing, IEEE Transactions on 10. 3(2011): 392-405.
+
+\bibitem{PCO_Doyle_PRF_2012}
+Wang Y.Q., Doyle F.J.. "Optimal phase response functions for fast Pulse-Coupled synchronization in wireless sensor networks. "Signal Processing, IEEE Transactions on 60. 10(2012): 5583-5588.
+
+\bibitem{PCO_Doyle_PRF_2013}
+Wang Y.Q., Nunez F., Doyle F.J.. "Increasing Sync rate of Pulse-Coupled oscillators via phase response function design: theory and application to wireless networks. "Control Systems Technology, IEEE Transactions on 21. 4(2013): 1455-1462.
+
+\bibitem{PCO_CAS_2011}
+An Z.L., Zhu H.S., Li X.R., et al. "Nonidentical linear Pulse-Coupled oscillators model with application to time synchronization in wireless sensor networks. "Industrial Electronics, IEEE Transactions on vol 58. 2011: 2205-2215.
+
+\bibitem{Neuroscience_2007}
+E. M. Izhikevich, ¡°Dynamical Systems in Neuroscience: The Geometry of Excitability and Bursting¡±. London, U.K.: MIT Press, 2007.
+
+\bibitem{Voltage_sag_intro}
+McGranaghanM F, RMuellerD. ¡°Voltage sags in industrial systems¡±. IEEE Trans on Industry Applications, 1993,29(2) :397-403
+
+\bibitem{Smart_Meters}
+¡°Smart Meters and Smart Meter Systems: A Metering Industry Perspective¡±, A Joint Project of the EEI and AEIC Meter Committees, 2011.
+
+\bibitem{PowerReliabilityTheory}
+Leou R. C,Lu C. N. ¡°Adjustment of the Extemal Network¡¯s Measurements and  Its Effect on the Power Mismatch Analysis¡°, Proeeedings of IEEE Industry  Application Society Annual Meeting, Vol3. Phoenix(AX), 1999: 2072-2076
+
+\bibitem{PCO_Neuroscience_Theory_1997}
+F.C. Hoppensteadt and E.M. Izhikevich, ¡°Weakly Connected Neural Networks¡±, New York: Springer, 1997.
+
+\bibitem{PCO_Theory_1990}
+Mirollo R.E., Strogatz S.H.. "Synchronization of Pulse-Coupled Biological Oscillators. " SIAM Journal on Applied Mathematics, 50. 6(1990): 1645-1662
+
+\bibitem{Kuramoto}
+Kuramoto, Yoshiki (1984), Chemical Oscillations, Waves, and Turbulence, Springer-Verlag, New York, p. 164.
+
+\bibitem{Hodgkin-Huxley}
+B. Ermentrout, ¡°Type I membrances, phase resetting curves, and synchrony¡±, Neural Comput., vol. 8, no. 5, pp. 979-1001, Apr. 1996
+
+\bibitem{voltage_sag_method}
+C. Li, T. Tayjasanant, W. Xu, et al. ¡°Method for voltage-sag-source detection by investigating slope of the system trajectory¡±. Generation, Transmission and Distribution, IEE Pro, 2003, 150(3): 367-372.
+
+\end{thebibliography}
+
+%=================================================================
+% References:  Variant B
+%=================================================================
+% Use the following option to include external BibTeX files:
+%\bibliography{lite}
+%\bibliographystyle{mdpi}
+
+\end{document}
+
