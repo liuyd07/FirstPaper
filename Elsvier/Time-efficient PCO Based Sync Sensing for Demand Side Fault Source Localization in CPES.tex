@@ -1,50 +1,21 @@
-%  LaTeX support: latex@mdpi.com
-%  In case you need support, please attach any log files that you could have, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
 
 %=================================================================
 
-% LaTeX Class File and Rendering Mode (choose one)
-% You will need to save the "mdpi.cls" and "mdpi.bst" files into the same folder as this template file.
-
-%=================================================================
-
-\documentclass[sensors,article,accept,moreauthors,dvipdfm,12pt,a4paper]{mdpi}
-%--------------------
-% Class Options:
-%--------------------
-% journal
-%----------
-% Choose between the following MDPI journals:
-% actuators, administrativesciences, aerospace, agriculture, agronomy, algorithms, animals, antibiotics, antibodies, antioxidants, appliedsciences, arts, atmosphere, atoms, axioms, behavioralsciences, bioengineering, biology, biomedicines, biomolecules, biosensors, brainsciences, buildings, cancers, catalysts, cells, challenges, chemosensors, children, chromatography, climate, coatings, computation, computers, cosmetics, crystals, dentistryjournal, diagnostics, diseases, diversity, econometrics, economies, education, electronics, energies, entropy, environmentalsciences, environments, fibers, foods, forests, futureinternet, galaxies, games, genes, geosciences, healthcare, humanities, informatics, information, inorganics, insects, ijerph, ijfs, ijms, ijgi, jcdd, jcm, jdb, jfb, joi, jlpea, jmse, jpm, jrfm, jsan, land, laws, life, lubricants, machines, marinedrugs, materials, mathematics, medicalsciences, membranes, metabolites, metals, microarrays, micromachines, microorganisms, minerals, molbank, molecules, nanomaterials, nutrients, optics, pathogens, pharmaceuticals, pharmaceutics, pharmacy, plants, polymers, processes, proteomes, publications, religions, remotesensing, resources, risks, robotics, sensors, socialsciences, societies, sports, sustainability, symmetry, systems, technologies, toxics, toxins, vaccines, veterinarysciences, viruses, water
-%---------
-% article
-%---------
-% The default type of manuscript is article, but could be replaced by using one of the class options:
-% article, review, communication, commentary, letter, bookreview, correction, addendum, editorial.
-%----------
-% submit
-%----------
-% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g. the logo of the journal will get visible), the headings, and the copyright information. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
-%------------------
-% moreauthors
-%------------------
-% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
-%---------
-% pdftex
-%---------
-% The option "pdftex" is for use with pdfLaTeX only. If eps figure are used, use the optioin "dvipdfm", with LaTeX and dvi2pdf only.
-
-%=================================================================
-
-\setcounter{page}{1}
-\lastpage{x}
-\doinum{10.3390/------}
-\pubvolume{xx}
-\pubyear{2013}
-\history{Received: xx / Accepted: xx / Published: xx}
-%------------------------------------------------------------------
-% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
-%\pdfoutput=1
+\documentclass[3p]{elsarticle}
+%preprint default option which format the document for submission to
+%Elsevier journals.
+%review similar to the preprint option, but increases the baselineskip to
+%facilitate easier review process.
+%1p formats the article to the look and feel of the final format of model 1+
+%journals. This is always single column style.
+%3p formats the article to the look and feel of the final format of model
+%3+ journals. If the journal is a two column model, use twocolumn
+%option in combination.
+%5p formats for model 5+ journals. This is always of two column style.
+%authoryear author-year citation style of natbib.sty. If you want to add
+%extra options of natbib.sty, you may use the options as comma delimited
+%strings as arguments to \biboptions command. An example
+%would be:
 
 %=================================================================
 
@@ -59,34 +30,57 @@
 \makesavenoteenv{tabular}
 \usepackage{multirow}
 \usepackage{eqparbox}
+\usepackage{mdwmath}
+\usepackage{mdwtab}
+\usepackage{array}
+\usepackage[cmex10]{amsmath}
+\interdisplaylinepenalty=2500
+%\usepackage{cite}
 
 %=================================================================
+\begin{document}
+
 
 % Full title of the paper (Capitalized)
-\Title{Time-efficient Pulse-coupled Oscillators Based Synchronous Sensing for Electrical Fault Source Localization in Cyber Physical Energy System}
+\title{Time-efficient Pulse-coupled Oscillators Based Synchronous Sensing for Electrical Fault Source Localization in Cyber Physical Energy System}
 
-% Authors (Add full first names)
-\Author{Xue Wang $^{1,}$*, Youda Liu $^{1}$, Xinyao Sun $^{1}$ and Jiangwei Wu $^{1}$}
+\author[rvt]{C.V.~Radhakrishnan\corref{cor1}\fnref{fn1}}
+\ead{cvr@river-valley.com}
 
-% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-\address{%
-$^{1}$ State Key Laboratory of Precision Measurement Technology and Instruments, Department of Precision Instrument, Tsinghua University, Beijing, China; E-mails: liu-yd11@mails.tsinghua.edu.cn(Y.L.); sxy05@mails.tsinghua.edu.cn(X.S.); wujw10@mails.tsinghua.edu.cn(J.W.)}
-%$^{2}$ Institute 2, University 2, Full Address, City, Country}
+\author[rvt,focal]{K.~Bazargan\fnref{fn2}}
+\ead{kaveh@river-valley.com}
 
-% Contact information of the corresponding author (Add [2] after \corres if there are more than one corresponding author.)
-\corres{wangxue@mail.tsinghua.edu.cn;\\Tel.: +86-10-6277-6161; Fax: +86-10-6277-6161.}
+\author[els]{S.~Pepping\corref{cor2}\fnref{fn1,fn3}}
+\ead[url]{http://www.elsevier.com}
+
+\cortext[cor1]{Corresponding author}
+\cortext[cor2]{Principal corresponding author}
+\fntext[fn1]{This is the specimen author footnote.}
+\fntext[fn2]{Another author footnote, but a little more longer.}
+\fntext[fn3]{Yet another author footnote. Indeed, you can have any number of author footnotes.}
+\address[rvt]{River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala, India 695014 bRiver Valley Technologies, 9, Browns}
+
+\address[rvt]{River Valley Technologies, SJP Building, Cotton Hills, Trivandrum, Kerala, India 695014}
+\address[focal]{River Valley Technologies, 9, Browns Court, Kennford, Exeter, United Kingdom}
+\address[els]{Central Application Management,Elsevier, Radarweg 29, 1043 NX Amsterdam, Netherlands}
+
+\maketitle
 
 % Abstract
-\abstract{Synchronous measurement is very important in distributed power quality detection in cyber physical energy system applications, such as electrical power metering in building area network. On account of energy and communication capability limitation, the power safety supervision is challenging in large scale metering network while fault diagnosis demands high measurement and temporal synchronous accuracy. In addition, dynamic network management has been a general scenario in power information sensing networks, which introduces interruptions into network synchronization state. These require synchronization method to be time-efficient, accurate and scalable. There has been a wide variety of researches in synchronization methods for dynamic wireless networks, and pulse-coupled oscillators (PCO) has been a leading point for its fast synchronize rate and outstanding scalability. This paper depicts a cyber-physical energy system architecture for electrical power metering, in order to raise the measuring reliability, theoretically analysis the factors that have effect on PCO performance, then optimized the PCO dynamic model to improve the synchronize rate and verified it with simulation. Experiment results showed that the proposed model effectively reduces the time to reach synchronization without increase energy cost and complexity. And through applying the method in voltage sag fault location, the effectiveness of PCOs was evaluated.}
+\begin{abstract}
+Synchronous measurement is very important in distributed power quality detection in cyber physical energy system applications, such as electrical power metering in building area network. On account of energy and communication capability limitation, the power safety supervision is challenging in large scale metering network while fault diagnosis demands high measurement and temporal synchronous accuracy. In addition, dynamic network management has been a general scenario in power information sensing networks, which introduces interruptions into network synchronization state. These require synchronization method to be time-efficient, accurate and scalable. There has been a wide variety of researches in synchronization methods for dynamic wireless networks, and pulse-coupled oscillators (PCO) has been a leading point for its fast synchronize rate and outstanding scalability. This paper depicts a cyber-physical energy system architecture for electrical power metering, in order to raise the measuring reliability, theoretically analysis the factors that have effect on PCO performance, then optimized the PCO dynamic model to improve the synchronize rate and verified it with simulation. Experiment results showed that the proposed model effectively reduces the time to reach synchronization without increase energy cost and complexity. And through applying the method in voltage sag fault location, the effectiveness of PCOs was evaluated.
+\end{abstract}
 
 % Keywords: add 3 to 10 keywords
-\keyword{cyber physical energy system; time-efficient; pulse-coupled oscillators; dynamic sensing networks; power network safety}
+\begin{keyword}
+cyber physical energy system; time-efficient; pulse-coupled oscillators; dynamic sensing networks; power network safety
+\end{keyword}
 
 % The fields PACS and MSC may be left empty or commented out if not applicable
 %\PACS{}
 %\MSC{}
 
-\begin{document}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -258,7 +252,7 @@ The synchronization rate of \ref{phase_eq4} increases with an increase in the st
 
 Proof: As analyzed in the paragraph above Theorem 1, we only need to prove the statement when all $\xi_i \in[-\varepsilon, \varepsilon]$ for some $\varepsilon\in[0, (\pi/2))$, that is, $a_1$ in (\ref{phase_eq4}) is an increasing function of $g_i$ and {\small$(Q_g(x)/x)$}. Recall from (14) that {\small$\sigma_1G+\sigma_2lBB^T$} is an irreducible matrix with non-positive $\mu$ such that {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} is an irreducible non-negative matrix. Therefore, {\small$\lambda_{max}(\mu I-\sigma_1G+\sigma_2lBB^T))$} is the Perron-Froenius eigenvalue of {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} and is positive. Given that for any {\small$1\ll i\ll N$,$\mu-\lambda_i(\sigma_1G+\sigma_2lBB^T)$} is an eigenvalue of matrix {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$ where $\lambda_i$} denotes the $i$th eigenvalue, we have
 \begin{equation}
-\label{temporal_measure_error}
+\label{proof1}
 \mu-\lambda_{min}(\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T) = \\ \lambda_{max}(\mu I-\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T)
 \end{equation}
 that is
@@ -297,7 +291,7 @@ Q\left( x \right)=\sin \left( x \right)
 
 Hodgkin-Huxley Model was proposed in 1996\cite{Hodgkin-Huxley} and is known as advance-delay method. This method is widely used in explaining neural cell activity. The model has the following form:
 \begin{equation}
-\label{kuramoto_model2}
+\label{HH_model}
 Q\left( x \right)=\frac{\tanh \left( x/\epsilon  \right)}{\tanh \left( \pi /\epsilon  \right)}-\frac{x}{\pi },x\in \left[ -\pi ,\pi  \right]
 \end{equation}
 
@@ -308,12 +302,12 @@ while the parameter $\epsilon$ can be designed for a better synchronization perf
 Since the convergence rate is influenced by $Q(x)/x$, the
 
 \begin{equation}
-\label{kuramoto_model2}
+\label{QP_model}
 \frac{d{{\theta }_{i}}}{dt}={{\omega }_{i}}+\frac{K}{N}\sum\limits_{j=1}^{N}{Q\left( {{\theta }_{i}}-{{\theta }_{i}} \right)},i=1,...,N\
 \end{equation}
 
 \begin{equation}
-\label{kuramoto_model2}
+\label{QP_model2}
 Q\left( x \right)=\left\{ \begin{matrix}
    \sum\limits_{i=1}^{N}{{{a}_{i}}{{x}^{i}}} & x\in \left[ 0,\pi  \right)  \\
    \sum\limits_{i=1}^{N}{{{a}_{i}}{{\left( -x \right)}^{i}}} & x\in \left[ -\pi ,0 \right)  \\
@@ -579,9 +573,6 @@ To further enhance the safety supervision in cyber physical energy system throug
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\conflictofinterests{Conflicts of Interest}
-
-State any potential conflicts of interest here or ``The authors declare no conflicts of interest''.
 
 %=================================================================
 % References: Variant A
@@ -589,10 +580,7 @@ State any potential conflicts of interest here or ``The authors declare no confl
 % Back Matter (References and Notes)
 %----------------------------------------------------------
 % Style and layout of the references
-\bibliographystyle{mdpi}
-\makeatletter
-\renewcommand\@biblabel[1]{#1. }
-\makeatother
+
 
 \begin{thebibliography}{1}
 

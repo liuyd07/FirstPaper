@@ -411,7 +411,7 @@
 		Youda~Liu~\IEEEmembership{Student Member,~IEEE,}
         Xinyao~Sun
         and Jiangwei~Wu% <-this % stops a space
-\thanks{This paper is supported by National Natural Science Foundation of China under Grant \#61272428, and by PhD Programs Foundation of Ministry of Education of China under Grant \#20120002110067, and by a grant from the National High Technology Research and Development Program of China (863 Program) \#2012AA121500.}% <-this % stops a space
+\thanks{This paper is supported by National Natural Science Foundation of China under Grant \#61272428, by PhD Programs Foundation of Ministry of Education of China under Grant \#20120002110067, and by a grant from the National High Technology Research and Development Program of China under Grant \#2012AA121500.}% <-this % stops a space
 \thanks{The authors are with the Department of Precision Instrument, Tsinghua University, Beijing 100084, China(e-mail:wangxue@mail.tsinghua.edu.cn;liu-yd11@mails.tsinghua.edu.cn;sxy09@mails.tsinghua.edu.cn).}}
 
 %\thanks{M. Shell is with the Department
@@ -442,7 +442,7 @@
 
 % The paper headers
 \markboth{IEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS,~Vol.~X, No.~X, January~20XX}%
-{Xue \MakeLowercase{\textit{et al.}}: Time-efficient Pulse-Coupled Oscillators Based Synchronous Sensing for Demand Side Fault Source Localization in Cyber Physical Energy System}
+{Xue \MakeLowercase{\textit{et al.}}: Time-efficient Pulse-Coupled Oscillators for Demand Side Fault Source Localization in Cyber Physical Energy System}
 % The only time the second header will appear is for the odd numbered pages
 % after the title page when using the twoside option.
 %
@@ -474,7 +474,7 @@
 
 \begin{abstract}
 %\boldmath
-Synchronous measurement is very important in distributed power quality detection in cyber physical energy system applications, such as electrical power metering in building area network. On account of energy and communication capability limitation, the power safety supervision is challenging in large scale metering network while fault diagnosis demands high measurement and temporal synchronous accuracy. In addition, dynamic network management has been a general scenario in power information sensing networks, which introduces interruptions into network synchronization state. These require synchronization method to be time-efficient, accurate and scalable. There has been a wide variety of researches in synchronization methods for dynamic wireless networks, and pulse-coupled oscillators (PCO) has been a leading point for its fast synchronize rate and outstanding scalability. This paper depicts a cyber-physical energy system architecture for electrical power metering, in order to raise the measuring reliability, theoretically analysis the factors that have effect on PCO performance, then optimized the PCO dynamic model to improve the synchronize rate and verified it with simulation. Experiment results showed that the proposed model effectively reduces the time to reach synchronization without increase energy cost and complexity. And through applying the method in voltage sag fault location, the effectiveness of PCOs was certificated.
+Synchronous measurement is very important in distributed power quality detection in cyber physical energy system applications, such as electrical power metering in building area network. On account of energy and communication capability limitation, the power safety supervision is challenging in large scale metering network while fault diagnosis demands high measurement and temporal synchronous accuracy. In addition, dynamic network management has been a general scenario in power information sensing networks, which introduces interruptions into network synchronization state. These require synchronization method to be time-efficient, accurate and scalable. There has been a wide variety of researches in synchronization methods for dynamic wireless networks, and pulse-coupled oscillators (PCO) has been a leading point for its fast synchronize rate and outstanding scalability. This paper depicts a cyber-physical energy system architecture for electrical power metering, in order to raise the measuring reliability, theoretically analysis the factors that have effect on PCO performance, then optimized the PCO dynamic model to improve the synchronize rate and verified it with simulation. Experiment results showed that the proposed model effectively reduces the time to reach synchronization without increase energy cost and complexity. And through applying the method in voltage sag fault location, the effectiveness of PCO was certificated.
 \end{abstract}
 % IEEEtran.cls defaults to using nonbold math in the Abstract.
 % This preserves the distinction between vectors and scalars. However,
@@ -522,23 +522,15 @@ cyber physical energy system; time-efficient; pulse-coupled oscillators; dynamic
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
 
-\IEEEPARstart{E}{lectrical} information metering is widely employed in smart building management in demand side management for energy efficiency. With the increase of the scale and complexity of power supply network, traditional electrical metering systems no longer satisfy the real-time and accuracy requirements of online electrical analysis. The cyber-physical energy system (CPES) systematically synthesis the sensing, communication, computation and control processes and has been widely adopted in smart grid. Employing numbers of smart meters and intelligent sensors, CPES architecture effectively integrates and manages the energy, computing resources on demand \cite{CPES_Intro}. Distributed sensing networks offer a differential solution for the growing electrical metering.
+\IEEEPARstart{E}{lectrical} information metering is widely employed in smart building management in demand side management for energy efficiency. With the increase of the scale and complexity of power supply network, traditional electrical metering systems no longer satisfy the real-time and accuracy requirements of online electrical analysis. The cyber-physical energy system (CPES) systematically synthesis the sensing, communication, computation and control processes and has been widely adopted in smart grid. Employing numbers of smart meters and intelligent sensors, CPES architecture effectively integrates and manages the energy, computing resources on demand \cite{CPES_Intro}. Distributed sensing networks \cite{CSP} offer a differential solution for the growing electrical metering.
 
 As the scale and complexity of the electrical metering network increases, the supervisory of the electric safety has become more significant. Measuring reliability of power quality characters such as harmonics, voltage sags, flickers, etc. greatly interferes the fault diagnosis of electrical power network. As to improve the measuring reliability, synchronous metering is a matter of considerable importance in distributed dynamic sensing networks, and real-time requirements have been the most urgent and focused problems. In order to reach a higher fault diagnosis accuracy, electrical data is claimed to be measurement in the same temporal section. This requires measuring actions to be synchronized in time, otherwise, the data reliability will decrease thoroughly. Researches of the influence of synchronism on power network safety supervision has been carrying on \cite{Fault_Analysis_Intro}, however, the growing measuring network has claimed more requirements and restrictions on synchronization method.
 
-Numerous synchronization methods within distributed wireless sensing networks have been studied. Traditional solutions, such as TPSN, RBS, FTSP, Glossy, etc.\cite{SyncMethodInWSN, FTSP, Glossy} have been widely applied in wireless sensing networks. Nevertheless, conventional synchronization methods have limited scalability because they either divide the network into connected single-hop clusters or organize the whole network into a spanning tree, which is computationally challenging to construct for distributed large-scale networks.
+Numerous synchronization methods within distributed wireless sensing networks have been studied. Traditional solutions, such as Timing-sync Protocol for Sensor Networks(TPSN), Reference Broadcast time Synchronization(RBS), Flooding Time Synchronization Protocol(FTSP), Glossy, etc.\cite{SyncMethodInWSN, FTSP, Glossy} have been widely applied in wireless sensing networks. Nevertheless, conventional synchronization methods have limited scalability because they either divide the network into connected single-hop clusters or organize the whole network into a spanning tree, which is computationally challenging to construct for distributed large-scale networks.
 
-In order to improve the time efficiency and scalability, Pulse-coupled Oscillators (PCO) method utilizes simple identical pulses to couple the sensing nodes within the communication range and to reach synchronization. PCO-based strategies have many advantages over conventional synchronization methods: they are implemented at the physical layer or MAC layer, which eliminates the high-layer intervention; their message exchanging is independent of the origin of the signals, which saves the memory to store the time information of other nodes. PCO has draw the focus of worldwide researchers. Anna Scaligone\cite{PCO_Scaglione_2005, PCO_Scaglione_2011} analyzed its scalability and synchronization characters and presented differential schemes to improve synchronous performance in multi-hop networks. Francis J. Doyle\cite{PCO_Doyle_PRF_2012,PCO_Doyle_PRF_2013} made an analogy between PCO method and neural cell, then theoretically developed the phase response model. Xiaowei Li\cite{PCO_CAS_2011} studied the influence of nonidentical network environment on PCO synchronization rate. Since PCOs method simply interact each sensing node with pulse signals, the intrinsic response model plays an important role in network synchronization performance. The state of art approach for pulse-coupled oscillators derives from the phase models in neural science\cite{Neuroscience_2007}, which however have not completely taken sensing network characters into account. The distributed, disperse computing mechanics with hardware and software delay was not considered. This paper optimized the response model to improve the time efficiency.
+In order to improve the time efficiency and scalability, Pulse-coupled Oscillators (PCO) method utilizes simple identical pulses to couple the sensing nodes within the communication range and to reach synchronization. PCO-based strategies have many advantages over conventional synchronization methods: they are implemented at the physical layer or MAC layer, which eliminates the high-layer intervention; their message exchanging is independent of the origin of the signals, which saves the memory to store the time information of other nodes. PCO has draw the focus of worldwide researchers. Anna Scaligone\cite{PCO_Scaglione_2005, PCO_Scaglione_2011} analyzed its scalability and synchronization characters and presented differential schemes to improve synchronous performance in multi-hop networks. Francis J. Doyle\cite{PCO_Doyle_PRF_2012,PCO_Doyle_PRF_2013} made an analogy between PCO method and neural cell, then theoretically developed the phase response model. Xiaowei Li\cite{PCO_CAS_2011} studied the influence of nonidentical network environment on PCO synchronization rate. Since PCO method simply interact each sensing node with pulse signals, the intrinsic response model plays an important role in network synchronization performance. The state of art approach for pulse-coupled oscillators derives from the phase models in neural science\cite{Neuroscience_2007}, which however have not completely taken sensing network characters into account. The distributed, disperse computing mechanics with hardware and software delay was not considered. This paper optimized the response model to improve the time efficiency.
 
 This paper represents the electrical power metering architecture under cyber-physical energy system. In order to reach whole network synchronization faster, a new PCO model is proposed to increase synchronization convergence rate. Theoretical analysis of the synchronization rate is presented and critical indicators of PCO method with various models are depicted. Finally, experiments based on general platform are set to prove the validness of the new PCO method.
-
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-%I wish you the best of success.
-
-%\hfill mds
-
-%\hfill January 11, 2007
 
 \section{Electrical power active sensing networks}
 
@@ -553,7 +545,7 @@ Under the distributed measuring architecture, safety supervision of power networ
 \label{Fig_CPES_Struct}
 \end{figure}
 
-In addition, to solve the within the dynamic sensing networks, real-time electrical power metering faces a lot of problems. Sensing networks operates under energy and communication limits which are the main obstacles to meet the real-time and large scale measuring requirements. Thus, dynamic energy and communication management becomes important. Sleeping and waking up of electrical sensing nodes will certainly break the transient stability of topology and synchronization state of the networks. Under SCADA (Supervisory Control And Data Acquisition system) measuring theory, the power quality metering requires the measuring data to be in the same temporal section, otherwise, the time error will be introduced in data analysis and mining process. The temporal measuring error is \cite{PowerReliabilityTheory}:
+In addition, to enhance fault diagnosis performance Within the dynamic sensing networks, real-time electrical power metering faces a lot of problems. Sensing networks operates under energy and communication limits which are the main obstacles to meet the real-time and large scale measuring requirements. Thus, dynamic energy and communication management becomes important. Sleeping and waking up of electrical sensing nodes will certainly break the transient stability of topology and synchronization state of the networks. Under SCADA (Supervisory Control And Data Acquisition system) measuring theory, the power quality metering requires the measuring data to be in the same temporal section, otherwise, the time error will be introduced in data analysis and mining process. The temporal measuring error is \cite{PowerReliabilityTheory}:
 
 \begin{equation}
 \label{temporal_measure_error}
@@ -561,7 +553,8 @@ Err_{temporal} = diag\{D_i\rho^{2}_{i}\},i=1,2,...,N
 \end{equation}
 
 While $D_i$ represents the square variance of the time offset of the $i$th sensing node. $\rho_i$ represents the changing rate of measured power quality character by the $i$th node. It is manifest that decreasing time offset is the only way to reduce temporal measuring error, which is the reason why synchronization methods are adopted.
-These claim a synchronization method fulfilling the requirements of high flexibility and scalability. As mentioned in section I, pulse-coupled oscillators behaves better in these perspectives than traditional wireless synchronization methods. PCOs method is decentralized, scalable, and can be adopted into various network types. Its simplicity, time- and energy-efficiency has drawn remarkable attention. The Algorithm scheme and validation is analyzed below.
+
+These requirements claim a synchronization method fulfilling the requirements of high flexibility and scalability. As mentioned in section I, pulse-coupled oscillators behaves better in these perspectives than traditional wireless synchronization methods. PCO method is decentralized, scalable, and can be adopted into various network types. Its simplicity, time- and energy-efficiency has drawn remarkable attention. The Algorithm scheme and validation is analyzed below.
 
 \section{Synchronous measurement algorithm}
 
@@ -611,7 +604,7 @@ Based on Assumption 2, the system in (\ref{PCO_dynamics}) can be described by th
 for $i = 1, 2,..., N$, where ${{\theta }_{g}}\in \left[ 0,2\pi  \right)$ and ${{\theta }_{i}}\in \left[ 0,2\pi  \right)$ denote the phases of the global cue and oscillator $i$, respectively.
 
 \begin{remark}
-The transformation from (1) to (2) is a standard practice in the study of weakly connected PCOs and it is applicable to any limit-cycle oscillation function $f_i$ and $f_g$.
+The transformation from (1) to (2) is a standard practice in the study of weakly connected PCO and it is applicable to any limit-cycle oscillation function $f_i$ and $f_g$.
 \end{remark}
 The detailed procedure has been well documented in and
 \begin{assumption}
@@ -687,7 +680,7 @@ The synchronization rate of \ref{phase_eq4} increases with an increase in the st
 
 Proof: As analyzed in the paragraph above Theorem 1, we only need to prove the statement when all $\xi_i \in[-\varepsilon, \varepsilon]$ for some $\varepsilon\in[0, (\pi/2))$, that is, $a_1$ in (\ref{phase_eq4}) is an increasing function of $g_i$ and {\small$(Q_g(x)/x)$}. Recall from (14) that {\small$\sigma_1G+\sigma_2lBB^T$} is an irreducible matrix with non-positive $\mu$ such that {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} is an irreducible non-negative matrix. Therefore, {\small$\lambda_{max}(\mu I-\sigma_1G+\sigma_2lBB^T))$} is the Perron-Froenius eigenvalue of {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$} and is positive. Given that for any {\small$1\ll i\ll N$,$\mu-\lambda_i(\sigma_1G+\sigma_2lBB^T)$} is an eigenvalue of matrix {\small$\mu I-(\sigma_1G+\sigma_2lBB^T)$ where $\lambda_i$} denotes the $i$th eigenvalue, we have
 \begin{equation}
-\label{temporal_measure_error}
+\label{proof1}
 \mu-\lambda_{min}(\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T) = \\ \lambda_{max}(\mu I-\sigma_1\mathbf{G}+\sigma_2l\mathbf{BB}^T)
 \end{equation}
 that is
@@ -726,7 +719,7 @@ Q\left( x \right)=\sin \left( x \right)
 
 Hodgkin-Huxley Model was proposed in 1996\cite{Hodgkin-Huxley} and is known as advance-delay method. This method is widely used in explaining neural cell activity. The model has the following form:
 \begin{equation}
-\label{kuramoto_model2}
+\label{HH_model}
 Q\left( x \right)=\frac{\tanh \left( x/\epsilon  \right)}{\tanh \left( \pi /\epsilon  \right)}-\frac{x}{\pi },x\in \left[ -\pi ,\pi  \right]
 \end{equation}
 
@@ -737,12 +730,12 @@ while the parameter $\epsilon$ can be designed for a better synchronization perf
 Since the convergence rate is influenced by $Q(x)/x$, the
 
 \begin{equation}
-\label{kuramoto_model2}
+\label{Quadratic Polygon Model1}
 \frac{d{{\theta }_{i}}}{dt}={{\omega }_{i}}+\frac{K}{N}\sum\limits_{j=1}^{N}{Q\left( {{\theta }_{i}}-{{\theta }_{i}} \right)},i=1,...,N\
 \end{equation}
 
 \begin{equation}
-\label{kuramoto_model2}
+\label{Quadratic Polygon Model2}
 Q\left( x \right)=\left\{ \begin{matrix}
    \sum\limits_{i=1}^{N}{{{a}_{i}}{{x}^{i}}} & x\in \left[ 0,\pi  \right)  \\
    \sum\limits_{i=1}^{N}{{{a}_{i}}{{\left( -x \right)}^{i}}} & x\in \left[ -\pi ,0 \right)  \\
@@ -772,19 +765,19 @@ Thus $Q(x)/x = k(\pi - x)$, which increases with the parameter $k$. However, the
 
 As shown in Fig. \ref{Fig_Qx_x}, the Hodgkin-Huxley model reaches the highest on $Q(x)/x$ at phase 0¡ã, however, the polygon model with second order overcomes the other two models in most phase section.  Thus, the synchronization rates of these 3 models are not simply decided by the $Q(x)/x$. Simulations are carried out to evaluate their synchronization features.
 
-Under MATLAB platform, synchronization performance of the 3 models is tested.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
+Synchronization performance of the 3 models is tested with simulation.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{Fig2_3phases.eps}
-\caption{Shapes of 3 phase response models in PCOs.}
+\caption{Shapes of 3 phase response models in PCO.}
 \label{Fig_Qx}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{Fig3_3phase_Qx_x.eps}
-\caption{The convergence rate criterion $Q(x)/x$ of 3 phase response models in PCOs}
+\caption{The convergence rate criterion $Q(x)/x$ of 3 phase response models in PCO}
 \label{Fig_Qx_x}
 \end{figure}
 
@@ -917,7 +910,7 @@ So through theoretical analysis and stimulation, the proposed quadratic polygon 
 To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section II was settled as the testing environment.
 \subsection{Experiment Setup}
 
-The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the DL/T 645-2007, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
+The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the multi-function meter communication protocol standard DL/T 645-2007 \cite{DLT_645_2007}, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
 
 Synchronous metering process is controlled by the global coordinator, e.g. the cluster head node. Synchronization period is 30s, and once synchronized the end sensing nodes execute simulative electrical information transmission.
 \subsection{Time efficiency evaluation of PCO models in dynamic sensing networks}
@@ -929,7 +922,7 @@ Synchronous metering process is controlled by the global coordinator, e.g. the c
 \label{Fig_Exp_compare}
 \end{figure}
 
-Dynamic sensing network management implies sensing nodes dynamically leave and join the network, and the interruption brought to the network transient stability depends on the dynamic node scale. The time required to synchronize network under various dynamic node scale is presented in Fig. 7. 2 types of dynamic interrupts were introduced at t=50s and t=80s, former is 10 nodes joining in, latter is 5 nodes leaving. Apparently, the nodes leaving event do not interfere present synchronization state of the network, yet nodes joining will bring step change. 3 PCOs model were adopted separately to synchronize the sensing network.
+Dynamic sensing network management implies sensing nodes dynamically leave and join the network, and the interruption brought to the network transient stability depends on the dynamic node scale. The time required to synchronize network under various dynamic node scale is presented in Fig. 7. 2 types of dynamic interrupts were introduced at t=50s and t=80s, former is 10 nodes joining in, latter is 5 nodes leaving. Apparently, the nodes leaving event do not interfere present synchronization state of the network, yet nodes joining will bring step change. 3 PCO models were adopted separately to synchronize the sensing network.
 
 Results show that under non-ideal environment the synchronization accuracy varies according to different models. Quadratic Polygon model reached the lowest phase shift error of the 3 models. Phase shifts brought by the node joint took different time to regain synchronization. Quadratic Polygon model took 5s, Hodgkin-Huxley Model took 24s and Kuramoto Model took over 30s. This means that Quadratic Polygon model performs a better synchronization accuracy and speed, even under non-identical frequency and time delays.
 \subsection{Data reliability evaluation of  PCO models in dynamic sensing networks}
@@ -962,13 +955,13 @@ From the result, it can be figured out that the 3 types of faults can be detecte
 \cline{2-4}
   & \textbf{Kuramoto Model} & \textbf{Hodgkin-Huxley Model} & \textbf{Quadratic Polygon Model} \\
 \hline
-Power/kW & (0.063, 1.52) & (6.2*e-4, 0.012) & (2.31*e-4, 0.003)  \\
+Power/kW & (0.063, 1.521) & (6.2*e-4, 0.012) & (2.3*e-4, 0.003)  \\
 \hline
-3th Harmonic\footnotemark &	(0.18,4.10) &	(0.0018, 0.041)	& (0.0007, 0.015) \\
+3th Harmonic\footnotemark &	(0.182, 4.104) &	(18.0*e-4, 0.041)	& (7.0*e-4, 0.015) \\
 \hline
-5th Harmonic* &	(0.073, 1.62) &	(7.2*e-4, 0.016)	& (2.71*e-4, 0.006) \\
+5th Harmonic* &	(0.073, 1.622) &	(7.2*e-4, 0.016)	& (2.7*e-4, 0.006) \\
 \hline
-7th Harmonic* &	(0.027, 0.58) &	(2.7*e-4, 0.005)	& (1.0*e-4, 0.002) \\
+7th Harmonic* &	(0.027, 0.584) &	(2.7*e-4, 0.005)	& (1.0*e-4, 0.002) \\
 \hline
 \end{tabular}
 \end{table}
@@ -983,11 +976,11 @@ Power/kW & (0.063, 1.52) & (6.2*e-4, 0.012) & (2.31*e-4, 0.003)  \\
 \hline
 \textbf{Fault Event} & \textbf{Kuramoto Model} & \textbf{Hodgkin-Huxley Model} & \textbf{Quadratic Polygon Model}  \\
 \hline
-M1 & 13.2\%	& 2.7\% &	0.82\% \\
+M1 & 13.22\%	& 2.71\% &	0.82\% \\
 \hline
-M2 & 6.1\% & 1.6\% & 0.65\% \\
+M2 & 6.13\% & 1.64\% & 0.65\% \\
 \hline
-M3 & 6.9\% & 1.8\% & 0.71\% \\
+M3 & 6.91\% & 1.82\% & 0.71\% \\
 \hline
 \end{tabular}
 
@@ -1151,7 +1144,10 @@ To further enhance the safety supervision in cyber physical energy system throug
 \begin{thebibliography}{30}
 
 \bibitem{CPES_Intro}
-S. Xinyao, W. Xue, W. Jiangwei, and L. Youda, "Hierarchical sparse learning for load forecasting in cyber-physical energy systems," in Instrumentation and Measurement Technology Conference (I2MTC), 2013 IEEE International, 2013, pp. 533-538.
+S. Xinyao, W. Xue, W. Jiangwei, and L. Youda, "Hierarchical sparse learning for load forecasting in cyber-physical energy systems". in Instrumentation and Measurement Technology Conference (I2MTC), 2013 IEEE International, 2013, pp. 533-538.
+
+\bibitem{CSP}
+X. Wang, S. Wang. "Collaborative signal processing for target tracking in distributed wireless sensor networks" Journal of Parallel and Distributed Computing, 2007, 67(5): 501-515.
 
 \bibitem{Fault_Analysis_Intro}
 T. Brennan. "Market Failures in Real-Time Metering". Journal Regulatory Economics, 2004, 26(2),pp 119-139
@@ -1210,6 +1206,9 @@ Kuramoto, Yoshiki (1984), Chemical Oscillations, Waves, and Turbulence, Springer
 \bibitem{Hodgkin-Huxley}
 B. Ermentrout, ¡°Type I membrances, phase resetting curves, and synchrony¡±, Neural Comput., vol. 8, no. 5, pp. 979-1001, Apr. 1996
 
+\bibitem{DLT_645_2007}
+DL/T 645-2007, "Multi-function watt-hour meter communication protocol"
+
 \bibitem{voltage_sag_method}
 C. Li, T. Tayjasanant, W. Xu, et al. ¡°Method for voltage-sag-source detection by investigating slope of the system trajectory¡±. Generation, Transmission and Distribution, IEE Pro, 2003, 150(3): 367-372.
 
@@ -1230,19 +1229,19 @@ C. Li, T. Tayjasanant, W. Xu, et al. ¡°Method for voltage-sag-source detection b
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{XUE_WANG_G}}]{Xue Wang}
 %Biography text here.
-(M`08)received the M.S.degree in
+(M'08)received the M.S.degree in
 measurement and instrument from Harbin Institute of Technology, Harbin, China, in 1991 and the Ph.D. degree in mechanical engineering from Huazhong University of Science and Technology, Wuhan, China, in 1994.
 
-From 1994 to 1996, he was a Postdoctoral Fellow in electrical power systems with Huazhong University of Science and Technology. He then joined the Department of Precision Instrument, Tsinghua University, Beijing, China, where he is currently a Professor and the Director of the Institute of Instrument Science and Technology. From May 2001 to July 2002, he was a Visiting Professor with the Department of Mechanical Engineering, University of Wisconsin, Madison. His research interests include engineering measurement, signal processing, wireless sensor networks, Cyber-Physical systems, and intelligent maintenance.
+From 1994 to 1996, he was a Postdoctoral Fellow in electrical power systems with Huazhong University of Science and Technology. He then joined the Department of Precision Instrument, Tsinghua University, Beijing, China, where he is currently a Professor and the Director of the Institute of Instrument Science and Technology. From May 2001 to July 2002, he was a Visiting Professor with the Department of Mechanical Engineering, University of Wisconsin, Madison. His research interests include engineering measurement, signal processing, wireless sensor networks, Cyber-physical systems, and intelligent maintenance.
 
 Dr.Wang is a member of the IEEE Instrumentation and Measurement Society, Computer Society, Computational Intelligence Society, and Communications Society.
 \end{IEEEbiography}
 
 %\begin{spacing}{1.0}
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{YoudaLiu}}]{Youda Liu}
-(S'13)received the B.S. degree in mechanical engineering in 2011 from Tsinghua University, Beijing, China,where he is currently working toward the Ph.D. degree with the Department of Precision Instrument.
+(S'14)received the B.S. degree in mechanical engineering in 2011 from Tsinghua University, Beijing, China,where he is currently working toward the Ph.D. degree with the Department of Precision Instrument.
 
-His research interests include signal and information processing, wireless sensor networks and Cyber-Physical systems.
+His research interests include signal and information processing, wireless sensor networks and Cyber-physical systems.
 \end{IEEEbiography}
 %\end{spacing}
 
@@ -1253,14 +1252,14 @@ His research interests include signal and information processing, wireless senso
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{XINYAO_SUN}}]{Xinyao Sun}
 received the B.S. degree in mechanical engineering in 2007 from Tsinghua University, Beijing, China,where he is currently working toward the Ph.D. degree with the Department of Precision Instrument.
 
-His research interests include signal and information processing, wireless sensor networks, and Cyber-Physical systems.
+His research interests include signal and information processing, wireless sensor networks, and Cyber-physical systems.
 \end{IEEEbiography}
 %\end{spacing}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{JIANGWEI_WU}}]{Jiangwei Wu}
 received the B.S. degree in measurement and instrument in 2007 and M.S. degree in instrument science and technology in 2010 from Harbin Institute of Technology, HarBin, China. He is currently working toward the Ph.D. degree with the Department of Precision Instrument in Tsinghua University, Beijing, China.
 
-His research interests are in the area of the power quality monitoring in wireless sensor networks and Cyber-Physical systems.
+His research interests are in the area of the power quality monitoring in wireless sensor networks and Cyber-physical systems.
 \end{IEEEbiography}
 
 % You can push biographies down or up by placing
