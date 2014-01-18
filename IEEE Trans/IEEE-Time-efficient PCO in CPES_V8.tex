@@ -594,7 +594,7 @@ for $i = 1, 2,..., N$, where ${{\theta }_{i}}\in \left[ 0,2\pi  \right)$ denote 
 \label{Qx_Fx}
 Q(\theta_{j} - \theta_{i}) = \frac{1}{T}\int_{0}^{T}f_{i}(x_{i}(t))\delta(t - t_j+\theta_{j}-\theta_{i})dt
 \end{equation}
-$T$ represents the synchronization cycle period. 
+$T$ represents the synchronization cycle period.
 The transformation from (\ref{PCO_dynamics}) to (\ref{PCO_phase_dynamics}) is a standard practice in the study of weakly connected pulse-coupled oscillator system and it is applicable to any limit-cycle oscillation function $f_i$.
 The detailed procedure has been well discussed in \cite{Neuroscience_2007}.
 \begin{assumption}
@@ -637,7 +637,7 @@ $\varphi = [\phi_{1},\phi_{2},...,\phi_{N}]^{T}$. Therefore, if all the nodes in
 where $\left\| \bullet  \right\|$ is the Euclidean norm. Larger $\alpha$ signifies faster synchronization.
 
 \subsection{Synchronization of Pulse-Coupled Oscillators in Networks}
-From (\ref{PCO_phase_dynamics_deviate_network}), the synchronization of weakly coupled network is a nonlinear dynamic system. The convergence behavior is discussed in the following.
+%From (\ref{PCO_phase_dynamics_deviate_network}), the synchronization of weakly coupled network is a nonlinear dynamic system. The convergence behavior is discussed in the following.
 \begin{theorem}
 The weakly coupled oscillator network described in (\ref{PCO_phase_dynamics_deviate_network}) will either synchronizes or convergence to stable phase locking state.
 \end{theorem}
@@ -654,9 +654,9 @@ where $\Sigma$ is defined as
 \Sigma = \small {diag\left\{\frac{Q\left(\boldsymbol{B}^T\phi\right)_1}{\left(\boldsymbol{B}^T\phi\right)_{1}}, \frac{Q\left(\boldsymbol{B}^T\phi\right)_2}{\left(\boldsymbol{B}^T\phi\right)_{2}}, ..., \frac{Q\left(\boldsymbol{B}^T\phi\right)_M}{\left(\boldsymbol{B}^T\phi\right)_{M}}\right\}}
 \end{equation}
 and $\left(\boldsymbol{B}^T\phi\right)_i, i=1,2,...,M$ denoting the $i$th element of the vector $\boldsymbol{B}^T\phi$.
-In dynamic systems, if $\Sigma$ is positive definite matrix, $\dot(V)$ will be negative unless $\varphi = 0$ and $V$ will monotonically decrease.
+In dynamic systems, if $\Sigma$ is positive definite matrix, $\dot{V}$ will be negative until $\varphi$ converge to 0 and $V$ will monotonically decrease.
 
-According Assumption 3,$\forall\phi_{i}\in(-\pi,\pi)$, we have $Q\left(\theta\right)/\theta>0 $. For diagonal matrix, eigenvalues follows:
+According to Assumption 3, we have $Q\left(\theta\right)/\theta>0 \forall\phi_{i}\in(-\pi,\pi)$. For diagonal matrix, eigenvalues follows:
 \begin{equation}
 \label{eigenvalue}
 \lambda_{0} = \min_{1\le i \le N}{\left(\boldsymbol{B}^T\phi\right)_i} > 0
@@ -758,7 +758,7 @@ Q\left( \theta \right)=\left\{ \begin{matrix}
 \end{equation}
 Thus $Q(\theta)/\theta = k(\pi - \theta)$, which increases with the parameter $k$.
 
-These 3 models' phase response function are shown in Fig. \ref{Fig_Qx}. All these models are odd function and continuous at $\theta=\pm \pi$, which avoid step changes in the dynamic system and gain stability of the network synchronization. However, in this way, it brings in nonzero solutions for $Q(\theta)$, which may lead to phase locking and influence local convergence of the dynamic system.
+These 3 models' phase response function are shown in Fig. \ref{Fig_Qx}. All these models are odd function and continuous at $\theta=\pm \pi$, which avoid step changes in the dynamic system and gain stability of the network synchronization. However, in this way, it brings in nonzero solutions for $Q(\theta)$, which may lead to phase locking and influence local convergence process.
 \subsection{Model Analysis and Optimization}
 \begin{figure}[!t]
 \centering
@@ -780,7 +780,7 @@ These 3 models' phase response function are shown in Fig. \ref{Fig_Qx}. All thes
 \caption{Synchronization consumption of 3 models under 100-node scale and coupling strength varying from 0.01 to 0.1}
 \label{Fig_Sync_rate_compare}
 \end{figure}
-In section IV, it can been explained from (\ref{conv_rate_2}) that the $Q(\theta)/\theta$ may influence the convergence rate, however, the criterion only explicitly defines the lower-limit of the convergence rate. Simulations are presented to evaluate the novel phase model. The convergence criterion $Q(\theta)/\theta$ of 3 Phase models are shown in Fig. \ref{Fig_Qx_x}.
+In section IV, it can been explained from (\ref{conv_rate_2}) that the $Q(\theta)/\theta$ may influence the convergence rate, however, the criterion only explicitly defines the lower-limit of the convergence rate. Simulations are presented to evaluate the novel phase model. The convergence criterion $Q(\theta)/\theta$ of 3 phase models are shown in Fig. \ref{Fig_Qx_x}.
 
 %\begin{figure}[!t]
 %\centering
