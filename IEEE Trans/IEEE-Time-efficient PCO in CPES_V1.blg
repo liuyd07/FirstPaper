@@ -1,6 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: Time-efficient PCO Based Sync Sensing for Demand Side Fault Source Localization in CPES.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: IEEE-Time-efficient PCO in CPES_V1.aux
 The style file: IEEEtran.bst
-I found no \bibdata command---while reading file Time-efficient PCO Based Sync Sensing for Demand Side Fault Source Localization in CPES.aux
+I found no \bibdata command---while reading file IEEE-Time-efficient PCO in CPES_V1.aux
 Warning--I didn't find a database entry for "CPES_Intro"
 Warning--I didn't find a database entry for "CSP"
 Warning--I didn't find a database entry for "Fault_Analysis_Intro"
@@ -13,14 +13,22 @@ Warning--I didn't find a database entry for "PCO_Doyle_PRF_2012"
 Warning--I didn't find a database entry for "PCO_Doyle_PRF_2013"
 Warning--I didn't find a database entry for "PCO_CAS_2011"
 Warning--I didn't find a database entry for "Neuroscience_2007"
+Warning--I didn't find a database entry for "NewFrontierOfSG"
+Warning--I didn't find a database entry for "Fault_Local_Using_Voltage"
+Warning--I didn't find a database entry for "Voltage_sag_intro"
+Warning--I didn't find a database entry for "Voltage_sag_local_Texas"
+Warning--I didn't find a database entry for "voltage_sag_method"
+Warning--I didn't find a database entry for "Voltage_sag_sync"
+Warning--I didn't find a database entry for "WSN_In_SmartGrid"
+Warning--I didn't find a database entry for "IEC61588"
 Warning--I didn't find a database entry for "Sync_Intro_InWSN_Book"
 Warning--I didn't find a database entry for "Smart_Meters"
-Warning--I didn't find a database entry for "NewFrontierOfSG"
 Warning--I didn't find a database entry for "PowerReliabilityTheory"
 Warning--I didn't find a database entry for "Kuramoto"
+Warning--I didn't find a database entry for "PCO_Neuroscience_Theory_1997"
+Warning--I didn't find a database entry for "nonlinear_system"
 Warning--I didn't find a database entry for "Hodgkin-Huxley"
 Warning--I didn't find a database entry for "DLT_645_2007"
-Warning--I didn't find a database entry for "voltage_sag_method"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.

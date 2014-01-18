@@ -526,15 +526,34 @@ cyber physical energy system; time-efficient; pulse-coupled oscillators; dynamic
 
 As the scale and complexity of the electrical metering network increases, the supervisory of the electric safety has become more significant. Measuring reliability of power quality characters such as harmonics, voltage sags, flickers, etc. greatly interferes the fault diagnosis of electrical power network. As to improve the measuring reliability, synchronous metering is a matter of considerable importance in distributed dynamic sensing networks, and real-time requirements have been the most urgent and focused problems. In order to reach a higher fault diagnosis accuracy, electrical data is claimed to be measurement in the same temporal section. This requires measuring actions to be synchronized in time, otherwise, the data reliability will decrease thoroughly. Researches of the influence of synchronism on power network safety supervision has been carrying on \cite{Fault_Analysis_Intro}, however, the growing measuring network has claimed more requirements and restrictions on synchronization method.
 
-Numerous synchronization methods within distributed wireless sensing networks have been studied. Traditional solutions, such as Timing-sync Protocol for Sensor Networks(TPSN), Reference Broadcast time Synchronization(RBS), Flooding Time Synchronization Protocol(FTSP), Glossy, etc.\cite{SyncMethodInWSN, FTSP, Glossy} have been widely applied in wireless sensing networks. Nevertheless, conventional synchronization methods have limited scalability because they either divide the network into connected single-hop clusters or organize the whole network into a spanning tree, which is computationally challenging to construct for distributed large-scale networks.
+Numerous synchronization methods within distributed wireless sensing networks have been studied. Traditional solutions, such as TPSN (Timing-sync Protocol for Sensor Networks), RBS (Reference Broadcast time Synchronization), FTSP (Flooding Time Synchronization Protocol), Glossy, etc.\cite{SyncMethodInWSN, FTSP, Glossy} have been widely applied in wireless sensing networks. Nevertheless, conventional synchronization methods have limited scalability because they either divide the network into connected single-hop clusters or organize the whole network into a spanning tree, which is computationally challenging to construct for distributed large-scale networks.
 
 In order to improve the time efficiency and scalability, Pulse-coupled Oscillators (PCO) method utilizes simple identical pulses to couple the sensing nodes within the communication range and to reach synchronization. PCO-based strategies have many advantages over conventional synchronization methods: they are implemented at the physical layer or MAC layer, which eliminates the high-layer intervention; their message exchanging is independent of the origin of the signals, which saves the memory to store the time information of other nodes. PCO has draw the focus of worldwide researchers. Anna Scaligone\cite{PCO_Scaglione_2005, PCO_Scaglione_2011} analyzed its scalability and synchronization characters and presented differential schemes to improve synchronous performance in multi-hop networks. Francis J. Doyle\cite{PCO_Doyle_PRF_2012,PCO_Doyle_PRF_2013} made an analogy between PCO method and neural cell, then theoretically developed the phase response model. Xiaowei Li\cite{PCO_CAS_2011} studied the influence of nonidentical network environment on PCO synchronization rate. Since PCO method simply interact each sensing node with pulse signals, the intrinsic response model plays an important role in network synchronization performance. The state of art approach for pulse-coupled oscillators derives from the phase models in neural science\cite{Neuroscience_2007}, which however have not completely taken sensing network characters into account. The distributed, disperse computing mechanics with hardware and software delay was not considered. This paper optimized the response model to improve the time efficiency.
 
 This paper represents the electrical power metering architecture under cyber-physical energy system. In order to reach whole network synchronization faster, a new PCO model is proposed to increase synchronization convergence rate. Theoretical analysis of the synchronization rate is presented and critical indicators of PCO method with various models are depicted. Finally, experiments based on general platform are set to prove the validness of the new PCO method.
 
+The rest of the paper is organized as follows. Section II introduces the requirements of fault localization and relevant synchronization methods. Section III introduces the CPES architecture for the grid metering on the demand side and fault localization requirements for network synchronization. Section IV describes the dynamics of pulse-coupled oscillators method and proves its convergence criterion. According to the criterion, an optimized PCO model is proposed in Section V and its properties are discussed. In Section VI, the PCO method performance and its effect on fault localization are testified in simulation experiments. Finally Section VII provides conclusive remarks and future work.
+
+\section{Related Works}
+
+CPES works
+
+There has been a lot of research on fault diagnosis and localization on smart grid.
+Fault Diagnosis methods lack the consideration of the synchronization accuracy.
+On the demand side, the expense of PMU and GPS is high.
+Upcoming smart meters will not allow complicated communication wires.
+Sufficient synchronous accuracy for distributed wireless network is urgent.
+
+Synchronization works
+Studies have been proposed to solve the synchronization problem in large decentralized wireless networks.\cite{Sync_Intro_InWSN_Book} Ever since NTP (Network Time Protocol) was proposed in 1988, the time synchronization has become a research focus. To fulfill the requirements of 
+Traditional ones: TPSN, FTSP, RBS, Glossy, 
+Do not consider the 
+PCO new
+other work
+
 \section{Electrical power active sensing networks}
 
-Large scale electrical sensing network has attracted sufficient researchers¡¯ focus and electric metering system has been evolving ever since. Traditional Automated Metering Reading (AMR) System which behaves only one-way manual centralized detection is at last gasp, while Advanced Metering Infrastructure (AMI) with a distributed architecture and integrated electrical analysis service has gradually taking the place\cite{Smart_Meters}. In the prospect of electrical metering system, Smart Grid has been. Cyber-physical system offers a distributed, dynamic-configuration, demand require response solution.\cite{CPES_Intro} With dynamic sensing networks, the cyber system will be able to collect real-time electrical power quality parameters and deploy distributed data analysis and computation for the energy saving. The basic architecture is shown in Fig.\ref{Fig_CPES_Struct}.
+Large scale electrical sensing network has attracted sufficient researchers¡¯ focus and electric metering system has been evolving ever since. Traditional Automated Metering Reading (AMR) System which behaves only one-way manual centralized detection is at last gasp, while Advanced Metering Infrastructure (AMI) with a distributed architecture and integrated electrical analysis service has gradually taking the place\cite{Smart_Meters}. In the prospect of electrical metering system, smart grid is the promising solution for a less centralized and more consumer-interactive network.\cite{NewFrontierOfSG} Cyber-physical system offers a distributed, dynamic-configuration, demand require response solution.\cite{CPES_Intro} With dynamic sensing networks, the cyber system will be able to collect real-time electrical power quality parameters and deploy distributed data analysis and computation for the energy saving. The basic architecture is shown in Fig.\ref{Fig_CPES_Struct}.
 
 Under the distributed measuring architecture, safety supervision of power network faces new challenges. Continuous online monitoring will be unavailable in such large scale with energy and communication constraints, and the transient power accidents are hard to capture. For example, voltage sag, which is the cause of nearly 80\% power quality faults \cite{Fault_Analysis_Intro}, persists for only 10ms-1min, and the signal will spread in the power network. The fault localization requires high voltage measurement accuracy, especially temporal synchronization of the monitoring nodes. With time sequence disorder, it is difficult to identify the fault source.
 
@@ -604,7 +623,7 @@ Based on Assumption 2, the system in (\ref{PCO_dynamics}) can be described by th
 for $i = 1, 2,..., N$, where ${{\theta }_{g}}\in \left[ 0,2\pi  \right)$ and ${{\theta }_{i}}\in \left[ 0,2\pi  \right)$ denote the phases of the global cue and oscillator $i$, respectively.
 
 \begin{remark}
-The transformation from (1) to (2) is a standard practice in the study of weakly connected PCO and it is applicable to any limit-cycle oscillation function $f_i$ and $f_g$.
+The transformation from (\ref{PCO_dynamics}) to (\ref{PCO_phase_dynamics}) is a standard practice in the study of weakly connected PCO and it is applicable to any limit-cycle oscillation function $f_i$ and $f_g$.
 \end{remark}
 The detailed procedure has been well documented in and
 \begin{assumption}
@@ -765,8 +784,6 @@ Thus $Q(x)/x = k(\pi - x)$, which increases with the parameter $k$. However, the
 
 As shown in Fig. \ref{Fig_Qx_x}, the Hodgkin-Huxley model reaches the highest on $Q(x)/x$ at phase 0¡ã, however, the polygon model with second order overcomes the other two models in most phase section.  Thus, the synchronization rates of these 3 models are not simply decided by the $Q(x)/x$. Simulations are carried out to evaluate their synchronization features.
 
-Synchronization performance of the 3 models is tested with simulation.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
-
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{Fig2_3phases.eps}
@@ -781,8 +798,6 @@ Synchronization performance of the 3 models is tested with simulation.  Network 
 \label{Fig_Qx_x}
 \end{figure}
 
-Detailed modification of the Quadratic Polygon Model was realized under the same simulation condition. In the form in (\ref{Quadratic Polygon Model4}), the parameter $k$ may have effect on synchronization performance. Synchronization cycles required under different parameter k and coupling strength $\varepsilon$ is verified and results are shown in Fig. \ref{Fig_ParaK_vs_e}.
-
 \begin{figure}[!t]
 \centering
 \includegraphics[width=3.5in]{Fig4_Sync_rate_compare.eps}
@@ -796,6 +811,10 @@ Detailed modification of the Quadratic Polygon Model was realized under the same
 \caption{Synchronization cycles required under various parameter k and coupling strength $\varepsilon$}
 \label{Fig_ParaK_vs_e}
 \end{figure}
+
+Synchronization performance of the 3 models is tested with simulation.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
+
+Detailed modification of the Quadratic Polygon Model was realized under the same simulation condition. In the form in (\ref{Quadratic Polygon Model4}), the parameter $k$ may have effect on synchronization performance. Synchronization cycles required under different parameter k and coupling strength $\varepsilon$ is verified and results are shown in Fig. \ref{Fig_ParaK_vs_e}.
 
 The simulation result indicates that with different coupling strength $\varepsilon$, the synchronization rate can reach a rather optimal level through modifying parameter $k$. The optimized synchronization cycle numbers are the same. In Quadratic Polygon Model $Q(x)/x = k(\pi - x)$, which will increases while $k$ increase. This means that if $k$ grows, the lower limit of convergence rate will rise, and synchronization cycles upper limit number will fall. The simulation results show affirm the deduction to certain extent, yet if $k$ is too large, the synchronization rate will decrease, and lead to phase locking of the whole network. Thus through optimizing $k$ can reach a high synchronize rate despite the coupling strength. The optimized k and the corresponding $\varepsilon$ are shown in Fig. \ref{Fgi6_K_vs_e_opt}.
 
@@ -821,6 +840,14 @@ So through theoretical analysis and stimulation, the proposed quadratic polygon 
   \includegraphics[width=3.5in]{Fig6_K_vs_e}\\
   \caption{Optimized parameter k under different coupling strength $\varepsilon$}
   \label{Fgi6_K_vs_e_opt}
+\end{figure}
+
+\begin{figure}
+  \centering
+  % Requires \usepackage{graphicx}
+  \includegraphics[width=3.5in]{Fig6_ParaK_Optimize}\\
+  \caption{Various parameter k under different coupling strength $\varepsilon$}
+  \label{Fgi6_ParaK Optimize}
 \end{figure}
 
 % An example of a floating figure using the graphicx package.
@@ -907,7 +934,7 @@ So through theoretical analysis and stimulation, the proposed quadratic polygon 
 
 \section{Experiments and Analysis}
 
-To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section II was settled as the testing environment.
+To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section III was settled as the testing environment.
 \subsection{Experiment Setup}
 
 The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the multi-function meter communication protocol standard DL/T 645-2007 \cite{DLT_645_2007}, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
@@ -917,7 +944,7 @@ Synchronous metering process is controlled by the global coordinator, e.g. the c
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=3.5in]{Fig7.eps}
+\includegraphics[width=3.5in]{Fig8_RealTestBed.eps}
 \caption{Dynamic interruptions on PCO synchronization performance}
 \label{Fig_Exp_compare}
 \end{figure}
@@ -927,7 +954,7 @@ Dynamic sensing network management implies sensing nodes dynamically leave and j
 Results show that under non-ideal environment the synchronization accuracy varies according to different models. Quadratic Polygon model reached the lowest phase shift error of the 3 models. Phase shifts brought by the node joint took different time to regain synchronization. Quadratic Polygon model took 5s, Hodgkin-Huxley Model took 24s and Kuramoto Model took over 30s. This means that Quadratic Polygon model performs a better synchronization accuracy and speed, even under non-identical frequency and time delays.
 \subsection{Data reliability evaluation of  PCO models in dynamic sensing networks}
 
-Synchronization error will be introduced into electrical quality measurement as described in section II. The measurement error is influenced by changing rate of the measured characters and time disorder. Take harmonic detection for example. Simulation data was measured in residential standard electrical environment 220V/50Hz, and the power quality characters¡¯ measuring accuracy is important for information mining. The synchronization methods will bring various measuring error according to the time accuracy. Residential power characters¡¯ data samples were collected, and the power consumption is shown in Fig. 8(to be modified). To get a typical result, high-power electrical appliances were turned on and off to introduce interruptions. The time synchronization¡¯s influence on temporal measuring error is shown in table \ref{table_I}.
+Synchronization error will be introduced into electrical quality measurement as described in section III. The measurement error is influenced by changing rate of the measured characters and time disorder. Take harmonic detection for example. Simulation data was measured in residential standard electrical environment 220V/50Hz, and the power quality characters¡¯ measuring accuracy is important for information mining. The synchronization methods will bring various measuring error according to the time accuracy. Residential power characters¡¯ data samples were collected, and the power consumption is shown in Fig. 8(to be modified). To get a typical result, high-power electrical appliances were turned on and off to introduce interruptions. The time synchronization¡¯s influence on temporal measuring error is shown in table \ref{table_I}.
 
 It can be figured out from the result that time synchronization accuracy has effect on temporal measuring error. Although the errors¡¯ magnitude is not that large when compared with the measured data, yet in large scale analysis and data mining, the error is not ignorable. Since the Quadratic Polygon Model reaches the highest accuracy in Part B, it also brought in the least temporal error in the 3 models.
 \subsection{Fault Localization with Synchronized Measurement}
@@ -935,14 +962,14 @@ It can be figured out from the result that time synchronization accuracy has eff
 To validate the synchronization in electrical fault diagnosis, voltage sag source localization is an appropriate test. The simulation sample of electrical network set is shown in Fig. \ref{Fig_Voltsag_Exp_set}. The Source supplies 110kV before the transformer and 3 different types of loads are organized, which are composed of nonlinear resistance load, linear resistance load and an asynchronous motor. These 3 types of loads represent the most electrical appliances. A simulation is carried out within simulation envrionment Simulink.
 \begin{figure}[!t]
 \centering
-\includegraphics[width=3.5in]{Fig8_VoltageSagExpSet}
+\includegraphics[width=3.5in]{Fig9_VoltageSagExpSet}
 \caption{Voltage sag source localization verification electrical model}
 \label{Fig_Voltsag_Exp_set}
 \end{figure}
 
 Set 3 false sources at different time points, M1, M2, M3, as shown in Fig. 8. M1, M2, M3 are short-circuit fault, while M1 is set at bus line, and M2, M3 are set in local lines at user side.  Locate the voltage sag source 100 times using system trajectory slope method \cite{voltage_sag_method} which is a widely authenticated way in voltage sag source location. With synchronization, the voltage sag source localization accuracy result is shown in table \ref{table_II}.
 
-From the result, it can be figured out that the 3 types of faults can be detected from the 3 different meters. However, for the sake of various synchronization accuracy, the localizing precision differs thoroughly.  Detection with Kuramoto model synchronization reaches the lowest precision of the 3 models while the new quadratic polygon model almost catches the fault every time. This experiment confirms that the amendment of the pulse coupled oscillator model, through increasing  synchronization accuracy of the measuring device, will reduce the fault localization error, and improve the whole safety of the cyber-physical energy system described in Section II.
+From the result, it can be figured out that the 3 types of faults can be detected from the 3 different meters. However, for the sake of various synchronization accuracy, the localizing precision differs thoroughly.  Detection with Kuramoto model synchronization reaches the lowest precision of the 3 models while the new quadratic polygon model almost catches the fault every time. This experiment confirms that the amendment of the pulse coupled oscillator model, through increasing  synchronization accuracy of the measuring device, will reduce the fault localization error, and improve the whole safety of the cyber-physical energy system described in Section III.
 \begin{table}[!t]
 \renewcommand{\arraystretch}{1.3}
 \caption{TEMPORAL MEASURING ERROR FOR POWER QUALITY CHARACTERS (FIRST ELEMENT: AVERAGE ERR; SECOND ELEMENT: MAX ERR)}
@@ -1149,14 +1176,26 @@ S. Xinyao, W. Xue, W. Jiangwei, and L. Youda, "Hierarchical sparse learning for 
 \bibitem{CSP}
 X. Wang, S. Wang. "Collaborative signal processing for target tracking in distributed wireless sensor networks" Journal of Parallel and Distributed Computing, 2007, 67(5): 501-515.
 
+\bibitem{NewFrontierOfSG}
+X. Yu, C. Cecati, T. Dillon and M. Simoes. "The new frontier of Smart Grids.". Industrial Electronics IEEE Transection on, 2011, Sept:49-63.
+
 \bibitem{Fault_Analysis_Intro}
 T. Brennan. "Market Failures in Real-Time Metering". Journal Regulatory Economics, 2004, 26(2),pp 119-139
+
+\bibitem{Sync_Intro_InWSN_Book}
+E. Serpedin, Q.Chaudhari, "Synchronization in wireless sensor networks : Parameter estimation, performance benchmarks and protocols", 2009, Aug. 31.
 
 \bibitem{Time_Sync_Intro}
 D. Ingram, P. Schaub, D. Campbell, and R. Taylor ¡°Evaluation of Precision Time Synchronisation Methods for Substation Applications¡± IEEE Symposium on Precision Clock Synchronization for Measurement, Control and Communication, 2012:1-6
 
-%\bibitem{TPSN}
-%S. Ganeriwal, R Kumar, M B. Srivastava. "Timing-sync protocol for sensor networks."Proceedings of the 1st international conference on. Los Angeles, California, USA: ACM, 2003: 138-149.
+\bibitem{TPSN}
+S. Ganeriwal, R Kumar, M B. Srivastava. "Timing-sync protocol for sensor networks."Proceedings of the 1st international conference on. Los Angeles, California, USA: ACM, 2003: 138-149.
+
+\bibitem{CPS_In_SmartGrid}
+S. Karnouskos, "Cyber-Physical Systems in the Smart Grid", Industrial Informatics (INDIN), 2011 9th IEEE International Conference on, 2011, 20-23.
+
+\bibitem{WSN_In_SmartGrid}
+V. Gungor, B. Lu, G. Hancke, "Opportunities and Challenges of Wireless Sensor Networks in Smart Grid", Industrial Electronics, IEEE Transection on, vol. 57, No. 10, pp 3557-3564, 2010.
 
 \bibitem{SyncMethodInWSN}
 Yik-chung, wu, Chaudhari, q., Serpedin, e.. "Clock synchronization of wireless sensor networks. "Signal Processing Magazine, IEEE 28. 1(2011): 124-138.
@@ -1184,6 +1223,15 @@ An Z.L., Zhu H.S., Li X.R., et al. "Nonidentical linear Pulse-Coupled oscillator
 
 \bibitem{Neuroscience_2007}
 E. M. Izhikevich, ¡°Dynamical Systems in Neuroscience: The Geometry of Excitability and Bursting¡±. London, U.K.: MIT Press, 2007.
+
+\bibitem{Fault_Local_Using_Voltage}
+Z. Galijasevic and A. Abur, "Fault Localization Using Voltage Measurements", Power Delivery, IEEE Transactions on, Vol 17, No. 2, pp441-445, 2002.
+
+\bibitem{Voltage_sag_sync}
+Y. Sillapawicharn and Y. Kumsuwan, "An Improvement of Synchronously Rotating Reference Frame Based Voltage Sag Detection for Voltage Sag Compensation Applications under Distorted Grid Voltages", IEEE PEDS, 2011
+
+\bibitem{Voltage_sag_local_Texas}
+Y. Dong, C. Zheng and M. Kezunovic, "Enhancing Accuracy While Reducing Comutation COmplexity for Voltage-Sag-Based Distribution Fault Location", Power Delivery, IEEE Transactions on, Vol.28, No.2, pp:1202-1212, 2013.
 
 \bibitem{Voltage_sag_intro}
 McGranaghanM F, RMuellerD. ¡°Voltage sags in industrial systems¡±. IEEE Trans on Industry Applications, 1993,29(2) :397-403
