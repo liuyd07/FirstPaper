@@ -658,7 +658,7 @@ $\varphi = [\phi_{1},\phi_{2},...,\phi_{N}]^{T}$. Therefore, if all the nodes in
 where $\left\| \bullet  \right\|$ is the Euclidean norm. Faster synchronization claims larger $\alpha$.
 
 \subsection{Synchronization of Pulse-Coupled Oscillators in Networks}
-From (\ref{PCO_phase_dynamics_deviate_network}), the synchronization of weakly coupled network follows nonlinear dynamic system, which 
+From (\ref{PCO_phase_dynamics_deviate_network}), the synchronization of weakly coupled network is a nonlinear dynamic system. The convergence behavior is discussed in the following.
 \begin{theorem}
 Under Assumption 3, the oscillator network described in (\ref{PCO_phase_dynamics_deviate_network}) will either synchronizes or convergence to stable phase locking state.
 \end{theorem}
@@ -680,7 +680,7 @@ where $\Sigma$ is defined as
 and $\left(\boldsymbol{B}^T\phi\right)_i, i=1,2,...,M$ denoting the $i$th element of the vector $\boldsymbol{B}^T\phi$.
 In dynamic systems, if $\Sigma$ is positive definite matrix, $\dot(V)$ will be negative unless $\varphi = 0$ and $V$ will monotonically decrease.
 
-According Assumption 3,$\forall\phi_{i}\in(-\pi,\pi)$, we have $Q\left(x\right)/x>0 $. For diagonal matrix, eigenvalues follows:
+According Assumption 3,$\forall\phi_{i}\in(-\pi,\pi)$, we have $Q\left(\theta\right)/\theta>0 $. For diagonal matrix, eigenvalues follows:
 \begin{equation}
 \label{eigenvalue}
 \begin{split}
@@ -714,18 +714,18 @@ $\alpha$ denotes the worst case synchronize rate, which is defined in (\ref{sync
 \label{conv_rate_2}
 \alpha = \lambda_{min}{\varepsilon\boldsymbol{B}\boldsymbol{B}^{T}} = \lambda_{0}{\varepsilon\boldsymbol{B}\boldsymbol{B}^{T}}
 \end{equation}
-
-
 Therefore, the network described (\ref{PCO_phase_dynamics_deviate_network}) will convergence to either synchronized or phase locking state.
 \end{IEEEproof}
 
-The strict mathematical justification is also discussed in \cite{PCO_Doyle_PRF_2012, PCO_Doyle_PRF_2013, PCO_Neuroscience_Theory_1997}. The convergence rate limitation depends on the specific formula $Q(\theta)$. Designing and selecting appropriate $Q(\theta)$ is the crucial point to determine the final convergence rate and stable state. According to former analysis, it can be seen that the optimizing phase response model is the key step of acquiring for higher convergence rate.
+Through (\ref{conv_rate_2}), in a given oscillator sensing network, the nodes interaction state matrix $\boldsymbol(B)$ and coupling strength $\varepsilon$ are specified constants, the convergence rate $\alpha$ is affected by $\lambda_{0}$ which is defined in (\ref{eigenvalue}). To improve the time-efficiency of network synchronization, one way to optimize the PCO network is to enhance the $Q(\theta)/\theta$, thus a larger $\lambda_{0}$ promising a larger $\alpha$.
+
+The strict mathematical justification of the weakly coupled oscillator networks is also discussed in \cite{PCO_Doyle_PRF_2012, PCO_Doyle_PRF_2013, PCO_Neuroscience_Theory_1997}. The convergence rate limitation depends on the specific formula $Q(\theta)$. Designing and selecting appropriate $Q(\theta)$ is the crucial point to determine the final convergence rate and stable state. According to former analysis, it can be seen that the optimizing phase response model is the key step of acquiring for higher convergence rate.
 
 \section{Time-efficient Pulse-Coupled Oscillators Model}
 
 Given that the PCO model makes an impact on the synchronization rate, the model should be well designed for the computation and energy limitations. Researchers have proposed various models and design methods to satisfy the time-efficiency, which are to be introduced in the following.
-
-\subsection{Kuramoto Model}
+\subsection{Pulse-Coupled Oscillators Model}
+\subsubsection{Kuramoto Model}
 
 Kuramoto Model was first proposed by Yoshiki Kuramoto\cite{Kuramoto} to explain the oscillators phenomenon in chemistry and neuroscience. F.J. Doyle III introduced and validated this model in wireless network. The model is defined:
 \begin{equation}
@@ -738,7 +738,7 @@ The $Q(\theta)$ can transform as:
 Q\left( \theta \right)=\sin \left( \theta \right)
 \end{equation}
 
-\subsection{Advanced Delay Tanh Model}
+\subsubsection{Advanced Delay Tanh Model}
 
 Advanced Delay Tanh Model was proposed by Francis J. Doyle III in 2013. \cite{PCO_Doyle_PRF_2013}. The design idea drived from the advance-delay function in biology community, such as Hodgkin-Huxley model \cite{Hodgkin-Huxley}. The advanced delay model has the following form:
 \begin{equation}
@@ -748,7 +748,7 @@ Q\left( \theta \right)=\frac{\tanh \left( \theta/\epsilon  \right)}{\tanh \left(
 
 while the parameter $\epsilon$ can be designed for a better synchronization performance. By experience, $\epsilon = 0.1$.
 
-\subsection{Quadratic Polygon Model}
+\subsubsection{Quadratic Polygon Model}
 
 Since the convergence rate is influenced by $Q(\theta)/\theta$, the
 
@@ -775,7 +775,7 @@ Considering the phase $\theta$ is limited in $(-\pi,\pi)$, the smooth function $
 \end{split}
 \end{equation}
 
-To maximize the $Q(\theta)/\theta$, take quadratic polygon function for example, the phase function should have the following form:
+As discussed in section IV, to maximize the $Q(\theta)/\theta$, take quadratic polygon function for example, the phase function should have the following form:
 \begin{equation}
 \label{Quadratic Polygon Model4}
 Q\left( \theta \right)=\left\{ \begin{matrix}
@@ -783,7 +783,17 @@ Q\left( \theta \right)=\left\{ \begin{matrix}
    k\theta\left( \pi +\theta \right) & \theta\in \left[ -\pi ,0 \right)  \\
 \end{matrix} \right.
 \end{equation}
-Thus $Q(\theta)/\theta = k(\pi - \theta)$, which increases with the parameter $k$. However, the $Q(\theta)/\theta$ function only explicitly defines the lower-limit of the convergence rate. Simulations are presented to evaluate the novel phase model. 3 Phase models are shown in Fig. \ref{Fig_Qx}, and the convergence criterion $Q(\theta)/\theta$ are shown in Fig. \ref{Fig_Qx_x}.
+Thus $Q(\theta)/\theta = k(\pi - \theta)$, which increases with the parameter $k$. 
+
+This 3 models derives from different
+\subsection{Model Analysis}
+
+\begin{equation}
+
+\end{equation}
+
+
+However, the $Q(\theta)/\theta$ function only explicitly defines the lower-limit of the convergence rate. Simulations are presented to evaluate the novel phase model. 3 Phase models are shown in Fig. \ref{Fig_Qx}, and the convergence criterion $Q(\theta)/\theta$ are shown in Fig. \ref{Fig_Qx_x}.
 
 \begin{figure}[!t]
 \centering
@@ -856,7 +866,10 @@ To evaluate the proposed PCO model in electrical metering system, experiments ar
 The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the multi-function meter communication protocol standard DL/T 645-2007 \cite{DLT_645_2007}, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
 
 Synchronous metering process is controlled by the global coordinator, e.g. the cluster head node. Synchronization period is 30s, and once synchronized the end sensing nodes execute simulative electrical information transmission.
-\subsection{Time efficiency evaluation of PCO models in dynamic sensing networks}
+
+\subsection{PCO model optimization}
+
+\subsection{Synchronous sensing of PCO models in dynamic sensing networks}
 
 \begin{figure}[!t]
 \centering
@@ -868,7 +881,6 @@ Synchronous metering process is controlled by the global coordinator, e.g. the c
 Dynamic sensing network management implies sensing nodes dynamically leave and join the network, and the interruption brought to the network transient stability depends on the dynamic node scale. The time required to synchronize network under various dynamic node scale is presented in Fig. 7. 2 types of dynamic interrupts were introduced at t=50s and t=80s, former is 10 nodes joining in, latter is 5 nodes leaving. Apparently, the nodes leaving event do not interfere present synchronization state of the network, yet nodes joining will bring step change. 3 PCO models were adopted separately to synchronize the sensing network.
 
 Results show that under non-ideal environment the synchronization accuracy varies according to different models. Quadratic Polygon model reached the lowest phase shift error of the 3 models. Phase shifts brought by the node joint took different time to regain synchronization. Quadratic Polygon model took 5s, Advanced Delay Tanh Model took 24s and Kuramoto Model took over 30s. This means that Quadratic Polygon model performs a better synchronization accuracy and speed, even under non-identical frequency and time delays.
-\subsection{Data reliability evaluation of  PCO models in dynamic sensing networks}
 
 Synchronization error will be introduced into electrical quality measurement as described in section III. The measurement error is influenced by changing rate of the measured characters and time disorder. Take harmonic detection for example. Simulation data was measured in residential standard electrical environment 220V/50Hz, and the power quality characters¡¯ measuring accuracy is important for information mining. The synchronization methods will bring various measuring error according to the time accuracy. Residential power characters¡¯ data samples were collected, and the power consumption is shown in Fig. 8(to be modified). To get a typical result, high-power electrical appliances were turned on and off to introduce interruptions. The time synchronization¡¯s influence on temporal measuring error is shown in table \ref{table_I}.
 
