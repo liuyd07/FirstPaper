@@ -759,13 +759,14 @@ Q\left( \theta \right)=\left\{ \begin{matrix}
 Thus $Q(\theta)/\theta = k(\pi - \theta)$, which increases with the parameter $k$.
 
 These 3 models' phase response function are shown in Fig. \ref{Fig_Qx}. All these models are odd function and continuous at $\theta=\pm \pi$, which avoid step changes in the dynamic system and gain stability of the network synchronization. However, in this way, it brings in nonzero solutions for $Q(\theta)$, which may lead to phase locking and influence local convergence process.
-\subsection{Model Analysis and Optimization}
-\begin{figure}[!t]
-\centering
-\includegraphics[width=3.5in]{Fig2_3phases.eps}
-\caption{Shapes of 3 phase response models for pulse-coupled oscillators.}
-\label{Fig_Qx}
-\end{figure}
+
+% \subsection{Model Analysis and Optimization}
+% \begin{figure}[!t]
+% \centering
+% \includegraphics[width=3.5in]{Fig2_3phases.eps}
+% \caption{Shapes of 3 phase response models for pulse-coupled oscillators.}
+% \label{Fig_Qx}
+% \end{figure}
 
 \begin{figure}[!t]
 \centering
@@ -793,27 +794,29 @@ As shown in Fig. \ref{Fig_Qx_x}, the Advanced Delay Tanh model reaches the highe
 
 Synchronization performance of the 3 models is tested with simulation.  Network scale set as 100 nodes and coupling strength varies among $[0.01, 0.1]$, which is generally adopted in weak coupled networks. Synchronization error threshold is set as 0.01 rad. Simulation result is shown in Fig. \ref{Fig_Sync_rate_compare}. From the result, it can be figured out that computing cycles needed to realize synchronization decrease as the coupling strength grows, and the decreasing speed is higher than exponential. This is helpful in designing dynamic sensing networks, since as the coupling strength $\varepsilon$ reduced, network scalability and flexibility reinforced, the energy consumption grows as a result of growth of synchronization cycles. In addition, pulse-coupled oscillators method with the Quadratic Polygon Model reaches synchronization state faster than the other 2 models under coupling strength in the section.
 
-The simulation result indicates that with different coupling strength $\varepsilon$, the synchronization rate can reach a rather optimal level through modifying parameter $k$. The optimized synchronization cycle numbers are the same. In Quadratic Polygon Model $Q(\theta)/\theta = k(\pi - \theta)$, which will increases while $k$ increase. This means that if $k$ grows, the lower limit of convergence rate will rise, and synchronization cycles upper limit number will fall. The simulation results show affirm the deduction to certain extent, yet if $k$ is too large, the synchronization rate will decrease, and lead to phase locking of the whole network. Thus through optimizing $k$ can reach a high synchronize rate despite the coupling strength.
+% The simulation result indicates that with different coupling strength $\varepsilon$, the synchronization rate can reach a rather optimal level through modifying parameter $k$. The optimized synchronization cycle numbers are the same. In Quadratic Polygon Model $Q(\theta)/\theta = k(\pi - \theta)$, which will increases while $k$ increase. This means that if $k$ grows, the lower limit of convergence rate will rise, and synchronization cycles upper limit number will fall. The simulation results show affirm the deduction to certain extent, yet if $k$ is too large, the synchronization rate will decrease, and lead to phase locking of the whole network. Thus through optimizing $k$ can reach a high synchronize rate despite the coupling strength.
 
 Substitute $Q(\theta)$ in (\ref{Quadratic Polygon Model4}) to (\ref{conv_rate_2}), the convergence rate would be:
 
 \begin{equation}
 \label{interaction between para k and coupling strength}
-\alpha  = \left( \lambda_{min}\varepsilon \mathbf{B}{{\mathbf{B}}^{T}} \right) = k\varepsilon \left( \pi -\theta \right) \mathbf{B}{{\mathbf{B}}^{T}}
+\alpha  = \left( \lambda_{min}\varepsilon \mathbf{B}{{\mathbf{B}}^{T}} \right) = k\varepsilon \left( \pi -\theta_{min} \right) \mathbf{B}{{\mathbf{B}}^{T}}
 \end{equation}
-
+$\theta_{min}$ represents the minimum of the current $\theta$ in the network.
 Considering the decentralized network, with $\varphi$ at certain time point, the factor $k\varepsilon$ will influence the convergence rate. Simulation results also present that the optimized $k$ follow reciprocal of $\varepsilon$. Yet it is not exactly proved theoretically the validation of quadratic polygon model modification, the result can be a reference in designing coupled networks.
 
 So through theoretical analysis and stimulation, the proposed quadratic polygon model offers a better time-efficient synchronization performance over the other two models. The performance can also be optimized by modifying parameter $k$ in the model. Employing the experiential relation between optimized $k$ and network coupling strength $\varepsilon$, design of sensing network will be able to increase time-efficiency, thus improve the temporal accuracy of the measuring data in distributed metering architecture, and then provide a more rigid synchronization service for fault localization on demand side.
 
 \section{Experiments and Analysis}
 
-To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section III was settled as the testing environment.
+To evaluate the proposed PCO model in electrical metering system, experiments are introduced in this section. Electrical information metering based on cyber-physical energy system mentioned in Section II is settled as the testing environment.
 \subsection{Experiment Setup}
 
-The simulation testing system is realized on OMNET++, which is widely used simulation platform for network communication test. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the multi-function meter communication protocol standard DL/T 645-2007 \cite{DLT_645_2007}, the standard answering message from the smart meter end device is 19 byte. Electrical information transformation event is triggered every minute. In order to avoid channel preemption, the metering process is triggered sequentially. Sensing network complied with 50 end sensing nodes and 1 cluster head.
+The simulation testing system is realized on OMNet++, which is widely used simulation platform for distributed networks. A Sensing network based on IEEE 802.15.4 protocol was settled. Under cyber-physical energy system architecture, the networks contains 3 layers of sensing nodes and forms a whole cluster, while the end sensing node simulate the electrical information metering process. The communication rate is limited in 250 kbps. According to the multi-function meter communication protocol standard DL/T 645-2007 \cite{DLT_645_2007}, each answering message from the smart meter node is 19 byte. Electrical information measuring event is triggered every minute.
+% In order to avoid channel preemption, the metering process is triggered sequentially.
+Sensing network complied with 50 end sensing nodes and 1 cluster head.
 
-Synchronous metering process is controlled by the global coordinator, e.g. the cluster head node. Synchronization period is 30s, and once synchronized the end sensing nodes execute simulative electrical information transmission.
+Synchronous metering process is controlled by the cluster head node. Synchronization period is 30s, and only in synchronized condition the end sensing nodes execute electrical information transmission.
 \begin{figure}
   \centering
   % Requires \usepackage{graphicx}
@@ -830,7 +833,7 @@ Synchronous metering process is controlled by the global coordinator, e.g. the c
   \label{Fgi6_K_vs_e_opt}
 \end{figure}
 \subsection{Time-efficient Optimization of PCO Model}
-Under the sensing network described above, the novel Quadratic Polygon Model can be optimized according to (\ref{interaction between para k and coupling strength}). To modifies parameter $k$, synchronization process of the testing system needs to be carried out under various network coupling strength $\varepsilon$ and different Quadratic Polygon Models with different parameter $k$. In the test region, $\varepsilon$ raises from 0.01 to 0.10 with a step of 0.001 and $k$ naturally grows from 1 to 60, traversing every positive number. Numbers of cycles to reach synchronization are drawn in Fig.\ref{Fgi6_ParaK Optimize}. Despite the phase locking region, the optimal parameter sets correspond to the trough which indicates the minimum time collapse to reach synchronization. Select the parameters $k$ and $\varepsilon$ with the least synchronize cycles and employ the rational fitting model, relations of the optimized parameter sets are shown in Fig.\ref{Fgi6_K_vs_e_opt}. The fitting result claims that $k$ can be calculated by $k=0.36 \varepsilon^{-0.99}$. This result will be applied in the following contrast with traditional methods.
+Under the experiment environment, Quadratic Polygon Model can be optimized according to (\ref{interaction between para k and coupling strength}). To modifies parameter $k$, synchronization process of the testing system needs to be carried out under various network coupling strength $\varepsilon$ and different Quadratic Polygon Models with different parameter $k$. In the test region, $\varepsilon$ raises from 0.01 to 0.10 with a step of 0.001 and $k$ naturally grows from 1 to 60, traversing every positive number. Numbers of cycles to reach synchronization are drawn in Fig.\ref{Fgi6_ParaK Optimize}. Despite the phase locking region, the optimal parameter sets correspond to the trough which indicates the minimum time collapse to reach synchronization. Select the parameters $k$ and $\varepsilon$ with the least synchronize cycles and employ the rational fitting model, relations of the optimized parameter sets are shown in Fig.\ref{Fgi6_K_vs_e_opt}. The fitting result claims that $k$ can be calculated by $k=0.36 \varepsilon^{-0.99}$. This result will be applied in the following contrast with traditional methods.
 
 \subsection{Synchronous Sensing of PCO Models in Dynamic Sensing Networks}
 
